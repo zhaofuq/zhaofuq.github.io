@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="google-site-verification" content="5OREVlomE7i1biRQgfGoFC3dh5C3JWAIjOJ0LZI1fZU" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="HumanNeRF: Generalizable Neural Human Radiance Field from Sparse Inputs">
+    <meta name="author" content="Fuqiang Zhao,
+                                Wei Yang,
+                                Jiakai Zhang,
+                                Pei Lin,
+								Yingliang Zhang,
+                                Jingyi Yu,
+                                Lan Xu">
+
+    <title>HumanNeRF: Generalizable Neural Human Radiance Field from Sparse Inputs</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>HumanNeRF: Generalizable Neural Human Radiance Field from Sparse Inputs</h2>
+        <h3>Arxiv 2022</h3>
+           <!-- <p class="abstract">A more generalizable neural human radiance field from sparse inputs.</p> -->
+    <hr>
+    <p class="authors">
+        <a href="https://zhaofuq.github.io/"> Fuqiang Zhao</a>,
+        <a > Wei Yang</a>,
+        <a href="https://Jiakai-zhang.github.io"> Jiakai Zhang</a>,
+        <a > Pei Lin</a>,
+        <a href="https://cn.linkedin.com/in/yingliangzhang"> Yingliang Zhang</a> </br>
+        <a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53862/page.htm"> Jingyi Yu</a>,
+        <a href="http://xu-lan.com/"> Lan Xu</a>
+    </p>
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="https://arxiv.org/pdf/2112.02789.pdf">Paper</a>
+        <a class="btn btn-primary" href="https://zhaofuq.github.io/humannerf">Code</a>
+        <a class="btn btn-primary" href="https://zhaofuq.github.io/humannerf">Data</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="vcontainer">
+            <iframe class='video' src="https://www.youtube.com/embed/u_11uchP08Y" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        <hr>
+        <p>
+            Recent neural human representations can produce high-quality multi-view rendering but require using dense multi-view inputs and costly training. 
+            They are hence largely limited to static models as training each frame is infeasible. 
+            We present HumanNeRF - a generalizable neural representation - for high-fidelity free-view synthesis of dynamic humans. 
+            Analogous to how IBRNet assists NeRF by avoiding per-scene training, HumanNeRF employs an aggregated pixel-alignment feature across multi-view inputs along with a pose embedded non-rigid deformation field for tackling dynamic motions. 
+            The raw HumanNeRF can already produce reasonable rendering on sparse video inputs of unseen subjects and camera settings. 
+            To further improve the rendering quality, we augment our solution with an appearance blending module for combining the benefits of both neural volumetric rendering and neural texture blending. 
+            Extensive experiments on various multi-view dynamic human datasets demonstrate the generalizability and effectiveness of our approach in synthesizing photo-realistic free-view humans under challenging motions and with very sparse camera view inputs.
+        </p>
+    </div>
+
+
+    <div class="section">
+        <h2>Pipeline</h2>
+        <hr>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/pipeline.png" style="width:100%; margin-right:-10px; margin-top:-10px;">
+        </div> 
+        <p>
+            The overview of our HumanNeRF method. Assuming the video input from six RGB cameras surrounding the performer, our
+            approach consists of a generalizable neural radiance field, an optional fast per-scene fine-tuning scheme and a novel neural
+            appearance blending field.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Result</h2>
+        <hr>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/teaser.png" style="width:100%; margin-right:-10px; margin-top:-10px;">
+        </div>
+        <p>
+            Our proposed HumanNeRF utilizes on-the-fly efficient general dynamic radiance field generation and neural blending, enabling
+            high-quality free-viewpoint video synthesis for dynamic humans. Our approach only takes sparse images as input and uses a pre-trained
+            network on large human datasets. Then we can effectively synthesize a photo-realistic image from a novel viewpoint. While these results
+            contain artifacts, we fine-tune 300 frames for a specific performer using only an hour and generate improved results.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Results</h2>
+        <hr>
+
+        <div class="col justify-content-center text-center">
+            <img src="img/gallery.png" style="width:100%; margin-right:-10px; margin-top:10px;">
+    </div>
+
+    <div class="section">
+        <h2>Paper</h2>
+        <hr>
+        <div>
+            <div class="list-group">
+                <a href="https://arxiv.org/pdf/2112.02789.pdf"
+                   class="list-group-item" align="center">
+                    <img src="img/preview.png" style="width:20%; margin-right:-20px; margin-top:-10px;" >
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Bibtex</h2>
+        <hr>
+        <div class="bibtexsection">
+            @article{zhao2021humannerf,
+                title={HumanNeRF: Generalizable Neural Human Radiance Field from Sparse Inputs},
+                author={Zhao, Fuqiang and Yang, Wei and Zhang, Jiakai and Lin, Pei and
+                    Zhang, Yingliang and Yu, Jingyi and Xu, Lan},
+                journal={arXiv preprint arXiv:2112.02789},
+                year={2021}
+              }
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>Send feedback and questions to <a href="https://zhaofuq.github.io/">Fuqiang Zhao</a></p>
+    </footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
