@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="google-site-verification" content="5OREVlomE7i1biRQgfGoFC3dh5C3JWAIjOJ0LZI1fZU" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Human Performance Modeling and Rendering via Neural Animated Mesh">
+    <meta name="author" content="Fuqiang Zhao,
+                                Yuheng Jiang,
+                                Kaixin Yao,
+                                Jiakai Zhang,
+                                Liao Wang,
+                                Haizhao Dai,
+                                Yuhui Zhong,
+								Yingliang Zhang,
+                                Minye Wu,
+                                Lan Xu,
+                                Jingyi Yu">
+    <title>Human Performance Modeling and Rendering via Neural Animated Mesh</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>Human Performance Modeling and Rendering via Neural Animated Mesh</h2>
+        <h3>SIGGRAPH Asia 2022</h3>
+           <!-- <p class="abstract">A more generalizable neural human radiance field from sparse inputs.</p> -->
+    <hr>
+    <p class="authors">
+        <a href="https://zhaofuq.github.io/"> Fuqiang Zhao</a>,
+        <a href="https://nowheretrix.github.io/"> Yuheng Jiang</a>,
+        <a > Kaixin Yao</a>,
+        <a href="https://Jiakai-zhang.github.io"> Jiakai Zhang</a>,
+        <a href="https://aoliao12138.github.io/"> Liao Wang</a>,
+        <a > Haizhao Dai</a>,
+        <a > Yuhui Zhong</a>,
+        <a href="https://cn.linkedin.com/in/yingliangzhang"> Yingliang Zhang</a> </br>
+        <a href="https://wuminye.com/"> Minye Wu</a>,
+        <a href="http://xu-lan.com/"> Lan Xu</a>,
+        <a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53862/page.htm"> Jingyi Yu</a>
+    </p>
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="https://arxiv.org/pdf/2209.08468.pdf">Paper</a>
+        <a class="btn btn-primary" href="https://github.com/zhaofuq/Instant-NSR">Code1</a>
+        <a class="btn btn-primary" href="https://github.com/nowheretrix/Instant-NK">Code2</a>
+        <a class="btn btn-primary" href="https://drive.google.com/drive/folders/1QhEXw9vrqRW5jUNqPGuxOwqbNC9r0Uay?usp=sharing">Data</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <!-- <div class="vcontainer">
+            <iframe class='video' src="https://www.youtube.com/embed/CKeXnQiLCd4" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div> -->
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/teaser.jpg" style="width:100%; margin-right:-10px; margin-top:-10px;">
+        </div> 
+        <hr>
+        <p>
+            We present a neural human modeling and rendering scheme compatible with conventional mesh-based production workflow. 
+            Based on dense multi-view input, our approach enables efficient and high-quality reconstruction, compression, and rendering of human performances. 
+            It supports 4D photo-real content playback for various immersive experiences of human performances in virtual and augmented reality.       
+        </p>
+    </div>
+
+
+    <div class="section">
+        <h2>Abstract</h2>
+        <hr>
+        <p>
+            We have recently seen tremendous progress in the neural advances for photo-real human modeling and rendering. 
+            However, it's still challenging to integrate them into an existing mesh-based pipeline for downstream applications. 
+            In this paper, we present a comprehensive neural approach for high-quality reconstruction, compression, and rendering of human performances from dense multi-view videos. 
+            Our core intuition is to bridge the traditional animated mesh workflow with a new class of highly efficient neural techniques. 
+            We first introduce a neural surface reconstructor for high-quality surface generation in minutes. 
+            It marries the implicit volumetric rendering of the truncated signed distance field (TSDF) with multi-resolution hash encoding. 
+            We further propose a hybrid neural tracker to generate animated meshes, which combines explicit non-rigid tracking with implicit dynamic deformation in a self-supervised framework. 
+            The former provides the coarse warping back into the canonical space, while the latter implicit one further predicts the displacements using the 4D hash encoding as in our reconstructor. 
+            Then, we discuss the rendering schemes using the obtained animated meshes, ranging from dynamic texturing to lumigraph rendering under various bandwidth settings. 
+            To strike an intricate balance between quality and bandwidth, we propose a hierarchical solution by first rendering 6 virtual views covering the performer and then conducting occlusion-aware neural texture blending. 
+            We demonstrate the efficacy of our approach in a variety of mesh-based applications and photo-realistic free-view experiences on various platforms, i.e., inserting virtual human performances into real environments through mobile AR or immersively watching talent shows with VR headsets.  
+
+        </p>
+    </div>
+
+
+    <div class="section">
+        <h2>Video</h2>
+        <hr>
+        <div class="vcontainer">
+            <iframe class='video' src="https://www.youtube.com/embed/k6cmr8HVHrQ" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Fast Surface Reconstruction</h2>
+        <hr>
+        <div class="row align-items-center">
+        <div class="col justify-content-center text-center">
+            <img src="img/pipeline-nsr.png" style="width:100%; margin-right:-10px; margin-top:-10px;">
+        </div>
+        <p>
+            The illustration of our fast surface reconstruction pipeline. 
+            (1) for a 3D input position x, we first find L surrounding voxels in a 3D multiresolution hash grid and compute d dimension feature with trilinear interpolation of eight corners for each voxel. 
+            (2) network takes the generated feature and view direction as inputs, and outputs SDF value and color.
+            (3) utilizes SDF value to compute the weight for blending color of each 3D input position x in a ray, and then generates the final pixel color for photo-metric loss in (4).
+        </p>
+        <!-- <div class="col justify-content-center text-center">
+            <video src="img/nsr-results.mp4" style="width:100%; margin-right:-10px; margin-top:-10px;">
+        </div> -->
+        <video style="width:100%" controls>
+            <source src="img/nsr-results.mp4" type="video/mp4">
+        </video>
+        <hr>
+        <h3>More Results of NSR</h3>
+        <hr>
+        <video style="width:100%" controls>
+            <source src="img/nsr-more.mp4" type="video/mp4">
+        </video>
+
+    </div>
+
+    <div class="section">
+        <h2>Hybrid Human Motion Tracking</h2>
+        <hr>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/pipeline-am.png" style="width:100%; margin-right:-10px; margin-top:-10px;">
+            </div>
+        </div>
+        <p>
+            The illustration of backward warping pipeline. We utilize two stages strategy to perform our neural tracking. 
+            In coarse stage Sec 4.1, we transform points in live space back to the canonical via the traditional non-rigid-tracking. 
+            In fine-tuning stage Sec 4.2, our deform net based on hashing encoding learns the residual displacement.
+        </p>
+        <hr>
+        <h3>Results of Neural Tracking</h3>
+        <hr>
+        <video style="width:100%" controls>
+            <source src="img/am-results.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="section">
+        <h2>Neural Texture Blending</h2>
+        <hr>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/pipeline-ntb.png" style="width:100%; margin-right:-10px; margin-top:-10px;">
+            </div>
+        </div>
+        <p>
+            The pipeline of neural texture blending. The raw images obtained from black cameras in the capture system are fed into lumigraph rendering system. 
+            We pick six novel views (red camera in the capture system) as the output views of lumigraph. 
+            These output views, together with the corresponding depth images, are sent into the neural blending module to generate novel view images.
+        </p>
+        <hr>
+        <h3>Gallery of Neural Texture Blending</h3>
+        <hr>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/gallery.png" style="width:75%; margin-right:-10px; margin-top:-10px;">
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Paper</h2>
+        <hr>
+        <div>
+            <div class="list-group">
+                <a href="https://arxiv.org/pdf/2112.02789.pdf"
+                   class="list-group-item" align="center">
+                    <img src="img/paper.png" style="width:20%; margin-right:-20px; margin-top:-10px;" >
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <h2>Bibtex</h2>
+        <hr>
+        <div class="bibtexsection">
+    @article{zhao2022human,
+        title={Human Performance Modeling and Rendering via Neural Animated Mesh},
+        author={Zhao, Fuqiang and Jiang, Yuheng and Yao, Kaixin and Zhang, Jiakai and Wang, Liao and 
+            Dai, Haizhao and Zhong, Yuhui and Zhang, Yingliang and Wu, Minye and Xu, Lan and others},
+        journal={arXiv preprint arXiv:2209.08468},
+        year={2022}
+        }
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>Send feedback and questions to <a href="https://zhaofuq.github.io/">Fuqiang Zhao</a></p>
+    </footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
