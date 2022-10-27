@@ -9,17 +9,22 @@
 
 <url>
   <loc>https://zhaofuq.github.io/</loc>
-  <lastmod>2022-03-15T13:24:38+00:00</lastmod>
+  <lastmod>2022-10-27T05:45:12+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://zhaofuq.github.io/files/CV/CV_Zhao.pdf</loc>
-  <lastmod>2022-03-15T13:24:38+00:00</lastmod>
+  <lastmod>2022-10-27T05:45:12+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://zhaofuq.github.io/NeuralAM/</loc>
+  <lastmod>2022-10-27T05:45:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://zhaofuq.github.io/humannerf/</loc>
-  <lastmod>2022-03-15T13:24:38+00:00</lastmod>
+  <lastmod>2022-10-27T05:45:12+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
