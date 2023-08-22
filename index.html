@@ -24,6 +24,16 @@
   <!-- online-fonts -->
   <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
   <!-- //online-fonts -->
+  <style>
+	#news-box {
+	height: 75px;
+	overflow: hidden;
+}
+#news-box-more{
+	font-size: 14px;
+}
+
+  </style>
 </head>
 
 <body>
@@ -71,21 +81,24 @@
             href="http://www.yu-jingyi.com/">Prof. Jingyi Yu</a>. I obtained my B.E. in <strong>software engineering </strong> at <a
             href="https://www.upc.edu.cn/">China University of Petroleum</a>.
             <br><br>
-            I am passionate and interested in <strong>4D reconstruction & rendering</strong> tasks in <strong>Computer Vision and Computer Graphics</strong>.
+            I am passionate and interested in <strong>reconstruction, rendering and generation</strong> tasks based on <strong>Neural Radiance Field</strong>. 
           </p>
-          <li>Neural Rendering and Reconstruction</li>
-          <li>Image-based Modeling</li>
-          <li>3D Human Modeling and Dynamics </li>
-
+          <li>Neural Rendering</li>
+          <li>3D & 4D Reconstruction</li>
+          <li>Text-To-3D & Image-To-3D Generation</li>
           <br>
           <font color="#f33"><b>News!</b></font>
           </p>
-          <li>[2022.12]&ensp; I serve as CVPR 2023 reviewer, review 3 papers.</li>
-          <li>[2022.09]&ensp; Human Performance Modeling and Rendering via Neural Animated Mesh is accepted by SIGGRAPH Asia 2022.</li>
-          <li>[2022.06]&ensp; I join NeuDim Digital Technology Inc, serve as CEO.</li>
-          <li>[2022.05]&ensp; I serve as ECCV 2022 reviewer, review 3 papers.</li>
-          <li>[2022.03]&ensp; HumanNeRF is accepted by CVPR 2022. Dataset is released.</li>
-          <li>[2022.01]&ensp; I serve as CVPR 2022 reviewer, review 2 papers.</li>
+           <div id="news-box">
+			<li>[2023.06]&ensp; I serve as ICCV 2023 reviewer, review 5 papers.</li>
+			<li>[2022.12]&ensp; I serve as CVPR 2023 reviewer, review 3 papers.</li>
+			<li>[2022.09]&ensp; Human Performance Modeling and Rendering via Neural Animated Mesh is accepted by SIGGRAPH Asia 2022.</li>
+			<li>[2022.06]&ensp; I join NeuDim Digital Technology Inc, serve as CEO.</li>
+			<li>[2022.05]&ensp; I serve as ECCV 2022 reviewer, review 3 papers.</li>
+			<li>[2022.03]&ensp; HumanNeRF is accepted by CVPR 2022. Dataset is released.</li>
+			<li>[2022.01]&ensp; I serve as CVPR 2022 reviewer, review 2 papers.</li>
+		   </div>
+		   <a id="news-box-more" href="javascript:;"style="font-size:16px;"><b>MORE >></b></a>
         </div>
       </div>
     </div>
@@ -317,6 +330,7 @@
             </div>
           </div>
         </div>
+        <h3 class="w3_head mb-5">Education</h3>
         <div class="row service_w3top mt-5">
           <div class="col-xl-12">
             <div class="d-flex experience-box">
@@ -398,6 +412,23 @@
     </section>
     <!-- //skill -->
   </div>
+  <script>
+	var newsBoxMoreBtn = document.getElementById('news-box-more')
+	var newsBox = document.getElementById('news-box');
+	var flag = false;
+	newsBoxMoreBtn.addEventListener('click',function(){
+		flag = !flag;
+		if(flag){
+			newsBox.style.height = 'auto';
+			newsBoxMoreBtn.innerHTML = 'CLOSE <<'
+		}
+		else{
+			newsBox.style.height = '75px';
+			newsBoxMoreBtn.innerHTML = 'MORE >>'
+		}
+		
+	})
+  </script>
 </body>
 
 </html>
