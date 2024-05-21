@@ -1,0 +1,212 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+html,
+body {
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;  /*Prevent scroll on narrow devices */
+  padding-top: 0px;
+  text-align: justify;
+}
+header {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+header h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+.authors {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+/* .authors {
+  font-size: 20px;
+} */
+nav {
+  margin-top: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 10px 15px;
+  background-color: #2980b9;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: #3498db;
+}
+
+main {
+  padding: 20px;
+}
+
+.introduction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.introduction .main-image {
+  max-width: 50%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.intro-text {
+  max-width: 50%;
+}
+
+.abstract {
+  margin-top: 40px;
+}
+
+
+footer {
+  padding: 10px 0;
+}
+
+/*.container {
+  max-width: 768px;
+}*/
+.container {
+  max-width: 1000px;
+}
+p {
+  font-size: 16px;
+  /*padding-bottom: 20px;*/
+}
+
+li {
+  font-size: 16px;
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+h3 {
+  text-align: center;
+  align-items: center;
+  color: #2c3e50;
+}
+
+h4 {
+  text-align: center;
+  align: center;
+  color: #2c3e50;
+}
+
+.jumbotron{
+    text-align: center;
+}
+
+.btn {
+    font-size: 18px;
+}
+
+.btn-disabled {
+    /*background-color: #f4f4f4;*/
+}
+
+.jumbotron h2 {
+  font-size: 36px;
+}
+
+.section {
+  padding-top: 30px;
+}
+
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vcontainer {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gif {
+    padding:10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.caption {
+  width:75%; 
+  font-size:14px
+}
+
+.bibtexsection {
+  font-family: "Courier",monospace;
+  font-size:15px;
+  white-space:pre;
+  background-color: #f4f4f4;
+  text-align:left;
+}
+
+.canvas-row canvas {
+  max-width:100%;
+}
+
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+}
+
+.vspace-top {
+    margin-top: 30px;
+}
+
+.carousel-item video {
+  width: 100%;
+  height: auto;
+}
+
+.publication-header .hero-body {
+}
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
