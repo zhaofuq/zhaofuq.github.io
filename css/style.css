@@ -864,6 +864,11 @@ section.gallery div {
 	border-radius: 100px;
 	color: #e7746f;
 }
+.paper-content {
+	margin-top: 1em;
+	text-align: left;
+	flex-grow: 1;
+}
 .paper-box {
 	margin-bottom: 6px;
 	padding: 6px 0;
