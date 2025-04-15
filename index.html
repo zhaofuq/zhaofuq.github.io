@@ -1,455 +1,1126 @@
 <!DOCTYPE html>
-<html lang="cx">
-
+<html lang="en">
 <head>
-  <title>Fuqiang Zhao's Homepage - Shanghaitech University</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="utf-8" />
-  <meta name="keywords" content="" />
-  <script>
-    addEventListener("load", function () {
-      setTimeout(hideURLbar, 0);
-    }, false);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuqiang Zhao - Computer Vision Researcher & Entrepreneur</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
 
-    function hideURLbar() {
-      window.scrollTo(0, 1);
-    }
-  </script>
-  <!-- Custom Theme files -->
-  <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-  <!-- font-awesome icons -->
-  <link href="css/fontawesome-all.min.css" rel="stylesheet">
-  <!-- //Custom Theme files -->
-  <!-- online-fonts -->
-  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
-  <!-- //online-fonts -->
-  <style>
-	#news-box {
-	height: 75px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            padding: 4rem 0;
+            margin-bottom: 0;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 1.5rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .publication-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-left: 3px solid var(--secondary-color);
+            background-color: var(--light-bg);
+        }
+
+        .publication-title {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .publication-authors {
+            color: #666;
+            font-style: italic;
+        }
+
+        .publication-venue {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        .skill-badge {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            margin: 0.8rem;
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #e9ecef;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+
+        #skills h4 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        #skills .row {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-info li {
+            margin-bottom: 1rem;
+        }
+
+        .contact-info i {
+            width: 30px;
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Publications Section Styles */
+        .year-section {
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .year-title {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .paper-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+
+        .paper-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #2980b9;
+        }
+
+        .paper_img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
 	overflow: hidden;
-}
-#news-box-more{
-	font-size: 14px;
-}
+            border-radius: 6px;
+            background-color: #f8f9fa;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
 
+        .paper_img:hover {
+            background-color: #e9ecef;
+        }
+
+        .paper_img img {
+            transition: transform 0.3s ease;
+            max-height: 200px;
+            object-fit: contain;
+        }
+
+        .paper_img:hover img {
+            transform: scale(1.05);
+        }
+
+        .paper-content {
+            padding: 1rem;
+        }
+
+        .paper-content h4 {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .authors {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .venue {
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .paper-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .paper-links .btn {
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .paper-links .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .paper-box {
+                padding: 1rem;
+            }
+            
+            .paper_img {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Experience and Education Styles */
+        .experience-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 1rem;
+        }
+
+        .experience-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .experience-list li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .paper-box h4 {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-box .venue {
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .paper-box p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .paper-links {
+            margin-top: 1rem;
+        }
+
+        .paper-links .btn {
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .paper-links .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* About Section Styles */
+        .highlight {
+            color: #3498db;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3498db;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+
+        .highlight:hover::after {
+            opacity: 0.6;
+        }
+
+        /* Quick Links Styles */
+        .quick-links-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .quick-links-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .quick-links-title {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .quick-links-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: #3498db;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .quick-link-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .quick-link-item:hover {
+            background-color: #e9ecef;
+            transform: translateY(-3px);
+            color: #3498db;
+        }
+
+        .quick-link-item i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #3498db;
+        }
+
+        .quick-link-item span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Profile Styles */
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .name-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-cn {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            color: #3498db;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        /* Content Styles */
+        .about-content {
+            padding-left: 2rem;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .highlight-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3498db;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .section-subtitle {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #3498db;
+        }
+
+        .interest-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .interest-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            color: #444;
+        }
+
+        .interest-list li i {
+            color: #3498db;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            width: 24px;
+        }
+
+        .service-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .service-item p {
+            color: #666;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                padding-left: 0;
+                margin-top: 2rem;
+            }
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            padding: 4rem 0;
+            margin-bottom: 0;
+        }
+
+        /* Profile Styles */
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .name-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-cn {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .position-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .affiliation {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        #skills .skill-category {
+            margin-bottom: 2rem;
+        }
+
+        #skills h4 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        #skills .skill-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1rem;
+        }
+
+        #skills .skill-item {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        #skills .skill-item::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
   </style>
 </head>
-
 <body>
-  <div class="sidenav">
-    <div class="side_top"> <img src="images/zhaofq.jpg" width="75%" alt="news image" class="img-fluid navimg">
-      <h1> Fuqiang Zhao - 赵富强 <br>
-        [<a href="files/CV/CV_Zhao_EN.pdf">Download CV</a> | <a href="https://www.linkedin.com/in/fuqiang-zhao-190227208/">LinkedIn</a>]<br>
-        [<a href="mailto:zhaofq@shanghaitech.edu.cn">Email</a> | <a href="https://github.com/zhaofuq">GitHub</a> 
-          | <a href="https://scholar.google.com/citations?user=_LoTgnIAAAAJ&hl=zh-CN&oi=ao">Scholar</a>]<br>
-      </h1>
-    </div>
-    <!-- header -->
-    <header>
-      <div class="container-fluid px-5 ">
-        <nav class="mnu mx-auto">
-          <label for="drop" class="toggle">Menu</label>
-          <input type="checkbox" id="drop">
-          <ul class="menu">
-            <!--<li><a href="index.html">Home</a></li-->
-            <li class="mt-sm-0"><a href="#about" class="scroll">Bio</a></li>
-            <li class="mt-sm-3"><a href="#publication" class="scroll">Publications</a></li>
-            <li class="mt-sm-3"><a href="#experience" class="scroll">Experience</a></li>
-            <li class="mt-sm-3"><a href="#skill" class="scroll">Skills</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-  </div>
-  <div class="main" id="about">
-    <div class="banner-text-w3ls">
-      <div>
-        <div class="mx-auto text-left">
-          <h1><strong>Fuqiang Zhao - 赵富强</strong></h1>
-          <br> 
-          <h5>Ph.D Candidate @ <a href="http://www.shanghaitech.edu.cn/"><b>ShanghaiTech University - 上海科技大学 </b></a> - <a
-            href="http://sist.shanghaitech.edu.cn/">SIST</a> - <a
-            href="http://vic.shanghaitech.edu.cn/">VDI</a></h5>
-          <!-- <p><a href="mailto:zhaofq@shanghaitech.edu.cn">zhaofq@shanghaitech.edu.cn</a></p> -->
-          <br>
-          <h5><b>About Me</b></h5>
-          Hi, now I am a PhD student in <strong>computer science and technology</strong> at VRVC Lab, <a
-            href="http://www.shanghaitech.edu.cn/">ShanghaiTech University</a> ,advised by <a
-            href="http://www.yu-jingyi.com/">Prof. Jingyi Yu</a>. I obtained my B.E. in <strong>software engineering </strong> at <a
-            href="https://www.upc.edu.cn/">China University of Petroleum</a>.
+    <!-- 添加返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop" title="返回顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-            My research spans several key areas, including <strong>3D Reconstruction & Rendering</strong> based on NeRF/3DGS, <strong>Camera-Conditioned Video Generation</strong>, and <strong>3D Generative AI</strong>.
-         
-          </p>
-          <li>Neural Rendering</li>
-          <li>3D & 4D Reconstruction</li>
-          <li>3D Generative AI</li>
-  
-          <br>
-          <h5><b>News!</b></h5>
-          </p>
-           <div id="news-box">
-      <li>[2023.06]&ensp; LetsGo: Large-Scale Garage Modeling and Rendering via LiDAR-Assisted Gaussian Primitives is accepted by SIGGRAPH Asia 2024.</li>
-			<li>[2023.06]&ensp; I serve as ICCV 2023 reviewer, review 5 papers.</li>
-			<li>[2022.12]&ensp; I serve as CVPR 2023 reviewer, review 3 papers.</li>
-			<li>[2022.09]&ensp; Human Performance Modeling and Rendering via Neural Animated Mesh is accepted by SIGGRAPH Asia 2022.</li>
-			<li>[2022.06]&ensp; I join NeuDim Digital Technology Inc, serve as CEO.</li>
-			<li>[2022.05]&ensp; I serve as ECCV 2022 reviewer, review 3 papers.</li>
-			<li>[2022.03]&ensp; HumanNeRF is accepted by CVPR 2022. Dataset is released.</li>
-			<li>[2022.01]&ensp; I serve as CVPR 2022 reviewer, review 2 papers.</li>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Fuqiang Zhao</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#publications">Publications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+    </div>
+        </nav>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <img src="images/zhaofq-middle.jpg" alt="Fuqiang Zhao" class="profile-image img-fluid rounded-circle mb-4">
+                    <h2 class="name-title">Fuqiang Zhao</h2>
+                    <p class="name-cn">赵富强</p>
+                    <div class="social-links mt-4">
+                        <a href="mailto:zhaofq@shanghaitech.edu.cn" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://scholar.google.com/citations?user=_LoTgnIAAAAJ" class="social-icon" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                        <a href="https://github.com/zhaofuq" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/fuqiang-zhao-190227208/" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+      </div>
+                <div class="col-md-9">
+                    <div class="about-content">
+                        <div class="title-info mb-4">
+                            <h3 class="position-title">Ph.D Candidate in Computer Science | Computer Vision Researcher | Entrepreneur</h3>
+                            <p class="affiliation">ShanghaiTech University | NeuDim Digital Technology Inc.</p>
+  </div>
+                        <p class="intro-text">
+                            I am a Ph.D. candidate at <a href="http://www.shanghaitech.edu.cn/eng/" class="highlight-link">ShanghaiTech University</a>, advised by <a href="http://www.yu-jingyi.com/" class="highlight-link">Prof. Jingyi Yu</a>. I am also the CEO and Founder of <a href="http://neudim.com/" class="highlight-link">NeuDim Digital Technology Inc.</a>, a startup focused on neural 3D/4D reconstruction technologies.
+                        </p>
+                        <p class="intro-text">
+                            My research interests spans several key areas, including 3D Reconstruction & Rendering based on NeRF/3DGS, and 3D Generative AI. I have a great passion for Neural Rendering, 3D Reconstruction and Generation, aiming to bridge the gap between academic research and industrial applications.
+                        </p>
+
+                        <div class="row mt-5">
+                            <div class="col-md-6">
+                                <h3 class="section-subtitle">Research Interests</h3>
+                                <ul class="interest-list">
+                                    <li><i class="fas fa-cube"></i> Neural Rendering</li>
+                                    <li><i class="fas fa-cube"></i> 3D Reconstruction</li>
+                                    <li><i class="fas fa-cube"></i> 3D Generative AI</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="section-subtitle">Academic Services</h3>
+                                <div class="service-item">
+                                    <h4 class="service-title">Conference Reviewer</h4>
+                                    <p>SIGGRAPH, CVPR, ICCV, ECCV</p>
 		   </div>
-		   <a id="news-box-more" href="javascript:;"style="font-size:16px;">MORE >></a>
         </div>
       </div>
     </div>
-
-    <!-- publications -->
-    <section class="wedo" id="publication">
-      <div class="container-fluid py-lg-1">
-        <h3 class="w3_head mb-5">Publications <font size ="5"></font></h3>
-          <div class="row paper-box">
-            <div class="col-md-3 col-12 paper_img"> 
-              <img 
-                src="files/Paper/aerialgo.png" width="100%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
               </div>
-          
-            <div class="col-md-9 col-12 paper-content">
-              <h4>AerialGo: Walking-through City View Generation from Aerial Perspectives<br>
-              </h4>
-              <p><strong>Fuqiang Zhao*</strong>, Yijing Guo*, Siyuan Yang*, Xi Chen, Luo Wang, Lan Xu, Yingliang Zhang, Yujiao Shi, Jingyi Yu<br></p>
-              <p>Arxiv Preprint, 2024</p>
-              <p>
-                [<a>ProjectPage</a>]
-                [<a href="https://arxiv.org/abs/2412.00157">ArxivPage</a>]
-              </p>
             </div>
-          </div>
-
-
-          <div class="row paper-box">
-            <div class="col-md-3 col-12 paper_img"> 
-              <img 
-                src="files/Paper/letsgo.jpg" width="100%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
-              </div>
-          
-            <div class="col-md-9 col-12 paper-content">
-              <h4>LetsGo: Large-Scale Garage Modeling and Rendering via LiDAR-Assisted Gaussian Primitives<br>
-              </h4>
-              <p>Jiadi Cui*, Junming Cao*, <strong>Fuqiang Zhao*</strong>, Zhipeng He, Yifan Chen, Yuhui Zhong, Lan Xu, Yujiao Shi, Yingliang Zhang, Jingyi Yu<br>
-              </p>
-              <p>(<strong>SIGGRAPH Aisa 2024</strong>) ACM Transactions on Graphics (Proce. of ACM SIGGRAPH Aisa 2024)</p>
-              <p>
-                [<a href="https://zhaofuq.github.io/LetsGo/">ProjectPage</a>]
-                [<a href="https://arxiv.org/pdf/2404.09748">ArxivPage</a>]
-                [<a href="https://www.youtube.com/watch?v=PhcF4ZfG1Sw">Video</a>]
-                [<a href="https://github.com/zhaofuq/LOD-3DGS">Code</a>]
-                [<a href="https://github.com/zhaofuq/LOD-SIBR-Viewer">Real-Time Viewer</a>]
-                [<a href="https://github.com/zhaofuq/LOD-Web-Viewer">Web Viewer</a>]
-              </p>
-            </div>
-          </div>
-
-          <div class="row paper-box">
-            <div class="col-md-3 col-12 paper_img"> 
-              <img 
-                src="files/Paper/nephele.png" width="100%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
-              </div>
-       
-            <div class="col-md-9 col-12 paper-content">
-              <h4>NEPHELE: A Neural Platform for Highly Realistic Cloud Radiance Rendering<br>
-              </h4>
-              <p>Haimin Luo, Siyuan Zhang, <strong>Fuqiang Zhao</strong>, Haotian Jing, Penghao Wang, Zhenxiao Yu, Dongxue Yan, Junran Ding, Boyuan Zhang, Qiang Hu, Shu Yin, Lan Xu, JIngyi Yu<br>
-              </p>
-              <p>Arxiv Preprint, 2023</p>
-              <p>
-                [ProjectPage</a>]
-                [<a href="https://arxiv.org/pdf/2303.04086.pdf">ArxivPage</a>]
-              </p>
-            </div>
-          </div>
-
-
-          <div class="row paper-box">
-            <div class="col-md-3 col-12 paper_img"> 
-              <img 
-                src="files/Paper/HPRAM.jpg" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
-              </div>
-            <!-- .Icon ends here -->
-            <div class="col-md-9 col-12 paper-content">
-              <h4>Human Performance Modeling and Rendering via Neural Animated Mesh<br>
-              </h4>
-              <p><strong>Fuqiang Zhao</strong>, Yuheng Jiang, Kaixin Yao, Jiakai Zhang, Liao Wang, Haizhao Dai, Yuhui Zhong, Yingliang Zhang, Minye Wu, Lan Xu, Jingyi Yu<br>
-              </p>
-              <p>(<strong>SIGGRAPH Aisa 2022</strong>) ACM Transactions on Graphics (Proce. of ACM SIGGRAPH Aisa 2022)</p>
-              <p>
-                [<a href="https://zhaofuq.github.io/NeuralAM/">ProjectPage</a>]
-                [<a href="https://arxiv.org/pdf/2209.08468.pdf">ArxivPage</a>]
-                [<a href="https://github.com/zhaofuq/Instant-NSR">Code1</a>]
-                [<a href="https://github.com/nowheretrix/Instant-NK">Code2</a>] 
-              </p>
-            </div>
-            <!-- .Service-content ends here -->
-          </div>
-
-
-          <div class="row paper-box">
-            <div class="col-md-3 col-12 paper_img"> 
-              <img 
-                src="files/Paper/neuvv.png" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
-              </div>
-            <!-- .Icon ends here -->
-            <div class="col-md-9 col-12 paper-content">
-              <h4>NeuVV: Neural Volumetric Videos with Immersive Rendering and Editing<br>
-              </h4>
-              <p>Jiakai Zhang, Liao Wang, Xinhang Liu, <strong>Fuqiang Zhao</strong>, Minzhang Li, Haizhao Dai, Boyuan Zhang, Wei Yang, Lan Xu, Jingyi Yu<br>
-              </p>
-              <p>Arxiv Preprint, 2022</p>
-              <p>
-                [ProjectPage</a>]
-                [<a href="https://arxiv.org/pdf/2202.06088.pdf">ArxivPage</a>]
-              </p>
-            </div>
-            <!-- .Service-content ends here -->
-          </div>
-
-          <div class="row paper-box">
-            <div class="col-md-3 col-12 paper_img"> 
-              <img 
-                src="files/Paper/fpo.png" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
-              </div>
-            <!-- .Icon ends here -->
-            <div class="col-md-9 col-12 paper-content">
-              <h4>Fourier PlenOctrees for Dynamic Radiance Field Rendering in Real-time<br>
-              </h4>
-              <p>Liao Wang*, Jiakai Zhang*, Xinhang Liu, <strong>Fuqiang Zhao</strong>, Yanshun Zhang, Yingliang Zhang, Minye Wu Lan Xu, Jingyi Yu<br>
-              </p>
-              <p>(<strong>CVPR 2022 Oral</strong>) Conference on Computer Vision and Pattern Recognition</p>
-              <p>[<a href="https://aoliao12138.github.io/FPO/">ProjectPage</a>] 
-                [<a href="https://arxiv.org/abs/2202.08614">ArxivPage</a>]
-
-                [<a href="https://aoliao12138.github.io/FPO/">Code</a>] 
-              </p>
-            </div>
-            <!-- .Service-content ends here -->
-          </div>
-
-          <div class="row paper-box">
-            <div class="col-md-3 col-12 paper_img"> 
-              <img 
-                src="files/Paper/humannerf.png" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
-              </div>
-            <!-- .Icon ends here -->
-            <div class="col-md-9 col-12 paper-content">
-              <h4>HumanNeRF: Efficiently Generated Human Radiance Field from Sparse Inputs<br>
-              </h4>
-              <p><strong>Fuqiang Zhao</strong>, Wei Yang, Jiakai Zhang, Pei Lin, Yingliang Zhang, Jingyi Yu, Lan Xu<br>
-              </p>
-              <p>(<strong>CVPR 2022</strong>) Conference on Computer Vision and Pattern Recognition</p>
-              <p>[<a href="https://zhaofuq.github.io/humannerf/">ProjectPage</a>] 
-                [<a href="https://arxiv.org/pdf/2112.02789.pdf">ArxivPage</a>]
-                [<a href="https://zhaofuq.github.io/humannerf/">Code</a>]
-
-              </p>
-            </div>
-            <!-- .Service-content ends here -->
-          </div>
-          <div class="row paper-box">
-            <div class="col-md-3 col-12 paper_img"> 
-              <img 
-                src="files/Paper/mvsnerf.png" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
-              </div>
-            <!-- .Icon ends here -->
-            <div class="col-md-9 col-12 paper-content">
-              <h4>MVSNeRF: Fast Generalizable Radiance Field Reconstruction from Multi-View Stereo<br>
-              </h4>
-              <p>Anpei Chen, Zexiang Xu, <strong>Fuqiang Zhao</strong>, Xiaoshuai Zhang, Fanbo Xiang, Jingyi Yu, Hao Su<br>
-              </p>
-              <p>(<strong> ICCV 2021</strong>) International Conference on Computer Vision</p>
-              <p>[<a href="https://apchenstu.github.io/mvsnerf/">ProjectPage</a>]  
-                [<a href="https://arxiv.org/abs/2103.15595">ArxivPage</a>] 
-                [<a href="https://github.com/apchenstu/mvsnerf">Code</a>]
-              </p>
-            </div>
-            <!-- .Service-content ends here -->
-          </div>
-          <div class="row paper-box">
-            <div class="col-md-3 col-12 paper_img"> 
-                  <img 
-                    src="files/Paper/editable.png" width="90%" playsinline=""
-                    autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
-                  </div>
-                <!-- .Icon ends here -->
-                <div class="col-md-9 col-12 paper-content">
-                  <h4>Editable Free-Viewpoint Video using a Layered Neural Representation</h4>
-                  <p>Jiakai Zhang, Xinhang Liu, Xinyi Ye, <strong>Fuqiang Zhao</strong>, Yanshun Zhang, Minye Wu, Yingliang Zhang, Lan Xu and Jingyi Yu</p>
-                  <p>(<strong>SIGGRAPH 2021</strong>) ACM Transactions on Graphics(Proce. of ACM SIGGRAPH 2021)</p>
-                  <p>[<a href="https://jiakai-zhang.github.io/st-nerf/">ProjectPage</a>]  
-                    [<a href="https://arxiv.org/pdf/2104.14786.pdf">ArxivPage</a>] 
-                    [<a href="https://github.com/DarlingHang/st-nerf">Code</a>]
-                    [<a href="https://www.youtube.com/watch?v=UrB-tqA8oeg&t=2s">Two Minute Papers</a>]
-                    [<a href="https://www.youtube.com/watch?v=UrB-tqA8oeg&t=2s">Interview with German National Audio</a>]
-                  </p>
-                </div>
-            </div>              
-          <div class="row paper-box">
-            <div class="col-md-3 col-12 paper_img"> 
-              <img 
-                src="files/Paper/mirrornerf.png" width="90%" playsinline=""
-                autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid" />
-              </div>
-            <!-- .Icon ends here -->
-            <div class="col-md-9 col-12 paper-content">
-              <h4>MirrorNeRF: One-shot Neural Portrait Radiance Field from Multi-mirror Catadioptric Imaging<br>
-              </h4>
-              <p>Ziyu Wang, Liao Wang, <strong>Fuqiang Zhao</strong>, Minye Wu, Lan Xu, Jingyi Yu<br>
-              </p>
-              <p>(<strong> ICCP 2021</strong>) International Conference on Computational Photography</p>
-            
-              <p>[ProjectPage] 
-                [<a href="https://arxiv.org/pdf/2104.02607.pdf">ArxivPage</a>]
-              </p>
-            </div>
-            <!-- .Service-content ends here -->
           </div>
     </section>
 
+    <!-- Publications Section -->
+    <section id="publications" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
 
-
-    <!-- experience -->
-    <section class="wedo" id="experience">
-      <div class="experience">
-        <h3 class="w3_head mb-5">Experience</h3>
-        <div class="row service_w3top mt-5">
-          <div class="col-xl-12">
-            <div class="d-flex experience-box">
-              <div class="icon"><span class="fa fa-briefcase"></span> </div>
-              <!-- .Icon ends here -->
-              <div class="service-content">
-                <div class="d-md-flex justify-content-between">
-                  <h4><a href="http://neudim.com/">NeuDim Digital Technology Inc. - 上海赜深数字科技有限公司</a></h4>
-                  <h4> July. 2022 - Present</h4>
-                </div>
-                <h4> CEO&amp;Founder</h4>
-                <p>NeuDim aims to substitute classical photogrammetry-based 3D/4D reconstruction 
-                    with emerging neural approaches. It was incubated from the Visual Data Intelligence (VDI) Center at ShanghaiTech, 
-                    by a group of fearless PhD students with various expertise on neural modeling, rendering, and tracking.</a></p>
-                <br>
+            <!-- 2024 Publications -->
+            <div class="year-section">
+                <h4 class="year-title">2024</h4>
+          <div class="row paper-box">
+            <div class="col-md-3 col-12 paper_img"> 
+                        <img src="files/Paper/aerialgo.png" width="100%" alt="AerialGo" class="img-fluid" />
               </div>
-              <!-- .Service-content ends here -->
+            <div class="col-md-9 col-12 paper-content">
+                        <h4>AerialGo: Walking-through City View Generation from Aerial Perspectives</h4>
+                        <p class="authors"><strong>Fuqiang Zhao*</strong>, Yijing Guo*, Siyuan Yang*, Xi Chen, Luo Wang, Lan Xu, Yingliang Zhang, Yujiao Shi, Jingyi Yu</p>
+                        <p class="venue">Arxiv Preprint, 2024</p>
+                        <div class="paper-links">
+                            <a href="#" class="btn btn-sm btn-outline-primary">Project</a>
+                            <a href="https://arxiv.org/abs/2412.00157" class="btn btn-sm btn-outline-primary">Arxiv</a>
+                        </div>
             </div>
-            <div class="d-flex experience-box">
-              <div class="icon"><span class="fa fa-briefcase"></span> </div>
-              <!-- .Icon ends here -->
-              <div class="service-content">
-                <div class="d-md-flex justify-content-between">
-                  <h4><a href="https://www.dgene.com/cn/">DGene Digital Technology Inc. - 上海叠境数字科技有限公司</a></h4>
-                  <h4> Jan. 2022 - Sep. 2022</h4>
-                </div>
-                <h4> R&amp;D Intern</h4>
-                <p>I work as a part-time research and development intern at <a href="https://www.dgene.com/eng/">DGene
-                    Digital Technology Inc. </a></p>
-                <br>
+          </div>
+
+          <div class="row paper-box">
+            <div class="col-md-3 col-12 paper_img"> 
+                        <img src="files/Paper/letsgo.jpg" width="100%" alt="LetsGo" class="img-fluid" />
               </div>
-              <!-- .Service-content ends here -->
+            <div class="col-md-9 col-12 paper-content">
+                        <h4>LetsGo: Large-Scale Garage Modeling and Rendering via LiDAR-Assisted Gaussian Primitives</h4>
+                        <p class="authors">Jiadi Cui*, Junming Cao*, <strong>Fuqiang Zhao*</strong>, Zhipeng He, Yifan Chen, Yuhui Zhong, Lan Xu, Yujiao Shi, Yingliang Zhang, Jingyi Yu</p>
+                        <p class="venue">SIGGRAPH Asia 2024</p>
+                        <div class="paper-links">
+                            <a href="https://zhaofuq.github.io/LetsGo/" class="btn btn-sm btn-outline-primary">Project</a>
+                            <a href="https://arxiv.org/pdf/2404.09748" class="btn btn-sm btn-outline-primary">Arxiv</a>
+                            <a href="https://www.youtube.com/watch?v=PhcF4ZfG1Sw" class="btn btn-sm btn-outline-primary">Video</a>
+                            <a href="https://github.com/zhaofuq/LOD-3DGS" class="btn btn-sm btn-outline-primary">Code</a>
+                            <a href="https://github.com/zhaofuq/LOD-SIBR-Viewer" class="btn btn-sm btn-outline-primary">Viewer</a>
+                            <a href="https://github.com/zhaofuq/LOD-Web-Viewer" class="btn btn-sm btn-outline-primary">Web</a>
+                        </div>
+                    </div>
+            </div>
+          </div>
+
+            <!-- 2023 Publications -->
+            <div class="year-section">
+                <h4 class="year-title">2023</h4>
+          <div class="row paper-box">
+            <div class="col-md-3 col-12 paper_img"> 
+                        <img src="files/Paper/nephele.png" width="100%" alt="NEPHELE" class="img-fluid" />
+              </div>
+            <div class="col-md-9 col-12 paper-content">
+                        <h4>NEPHELE: A Neural Platform for Highly Realistic Cloud Radiance Rendering</h4>
+                        <p class="authors">Haimin Luo, Siyuan Zhang, <strong>Fuqiang Zhao</strong>, Haotian Jing, Penghao Wang, Zhenxiao Yu, Dongxue Yan, Junran Ding, Boyuan Zhang, Qiang Hu, Shu Yin, Lan Xu, JIngyi Yu</p>
+                        <p class="venue">Arxiv Preprint, 2023</p>
+                        <div class="paper-links">
+                            <a href="#" class="btn btn-sm btn-outline-primary">Project</a>
+                            <a href="https://arxiv.org/pdf/2303.04086.pdf" class="btn btn-sm btn-outline-primary">Arxiv</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2022 Publications -->
+            <div class="year-section">
+                <h4 class="year-title">2022</h4>
+                <div class="row paper-box">
+                    <div class="col-md-3 col-12 paper_img"> 
+                        <img src="files/Paper/HPRAM.jpg" width="90%" alt="Human Performance" class="img-fluid" />
+                    </div>
+                    <div class="col-md-9 col-12 paper-content">
+                        <h4>Human Performance Modeling and Rendering via Neural Animated Mesh</h4>
+                        <p class="authors"><strong>Fuqiang Zhao</strong>, Yuheng Jiang, Kaixin Yao, Jiakai Zhang, Liao Wang, Haizhao Dai, Yuhui Zhong, Yingliang Zhang, Minye Wu, Lan Xu, Jingyi Yu</p>
+                        <p class="venue">SIGGRAPH Asia 2022</p>
+                        <div class="paper-links">
+                            <a href="https://zhaofuq.github.io/NeuralAM/" class="btn btn-sm btn-outline-primary">Project</a>
+                            <a href="https://arxiv.org/pdf/2209.08468.pdf" class="btn btn-sm btn-outline-primary">Arxiv</a>
+                            <a href="https://github.com/zhaofuq/Instant-NSR" class="btn btn-sm btn-outline-primary">Code1</a>
+                            <a href="https://github.com/nowheretrix/Instant-NK" class="btn btn-sm btn-outline-primary">Code2</a>
+                        </div>
+                    </div>
+          </div>
+
+          <div class="row paper-box">
+            <div class="col-md-3 col-12 paper_img"> 
+                        <img src="files/Paper/neuvv.png" width="90%" alt="NeuVV" class="img-fluid" />
+              </div>
+            <div class="col-md-9 col-12 paper-content">
+                        <h4>NeuVV: Neural Volumetric Videos with Immersive Rendering and Editing</h4>
+                        <p class="authors">Jiakai Zhang, Liao Wang, Xinhang Liu, <strong>Fuqiang Zhao</strong>, Minzhang Li, Haizhao Dai, Boyuan Zhang, Wei Yang, Lan Xu, Jingyi Yu</p>
+                        <p class="venue">Arxiv Preprint, 2022</p>
+                        <div class="paper-links">
+                            <a href="#" class="btn btn-sm btn-outline-primary">Project</a>
+                            <a href="https://arxiv.org/pdf/2202.06088.pdf" class="btn btn-sm btn-outline-primary">Arxiv</a>
+                        </div>
+            </div>
+          </div>
+
+          <div class="row paper-box">
+            <div class="col-md-3 col-12 paper_img"> 
+                        <img src="files/Paper/fpo.png" width="90%" alt="FPO" class="img-fluid" />
+              </div>
+            <div class="col-md-9 col-12 paper-content">
+                        <h4>Fourier PlenOctrees for Dynamic Radiance Field Rendering in Real-time</h4>
+                        <p class="authors">Liao Wang*, Jiakai Zhang*, Xinhang Liu, <strong>Fuqiang Zhao</strong>, Yanshun Zhang, Yingliang Zhang, Minye Wu Lan Xu, Jingyi Yu</p>
+                        <p class="venue">CVPR 2022 (Oral)</p>
+                        <div class="paper-links">
+                            <a href="https://aoliao12138.github.io/FPO/" class="btn btn-sm btn-outline-primary">Project</a>
+                            <a href="https://arxiv.org/abs/2202.08614" class="btn btn-sm btn-outline-primary">Arxiv</a>
+                            <a href="https://aoliao12138.github.io/FPO/" class="btn btn-sm btn-outline-primary">Code</a>
+                        </div>
+            </div>
+          </div>
+
+          <div class="row paper-box">
+            <div class="col-md-3 col-12 paper_img"> 
+                        <img src="files/Paper/humannerf.png" width="90%" alt="HumanNeRF" class="img-fluid" />
+              </div>
+            <div class="col-md-9 col-12 paper-content">
+                        <h4>HumanNeRF: Efficiently Generated Human Radiance Field from Sparse Inputs</h4>
+                        <p class="authors"><strong>Fuqiang Zhao</strong>, Wei Yang, Jiakai Zhang, Pei Lin, Yingliang Zhang, Jingyi Yu, Lan Xu</p>
+                        <p class="venue">CVPR 2022</p>
+                        <div class="paper-links">
+                            <a href="https://zhaofuq.github.io/humannerf/" class="btn btn-sm btn-outline-primary">Project</a>
+                            <a href="https://arxiv.org/pdf/2112.02789.pdf" class="btn btn-sm btn-outline-primary">Arxiv</a>
+                            <a href="https://zhaofuq.github.io/humannerf/" class="btn btn-sm btn-outline-primary">Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2021 Publications -->
+            <div class="year-section">
+                <h4 class="year-title">2021</h4>
+          <div class="row paper-box">
+            <div class="col-md-3 col-12 paper_img"> 
+                        <img src="files/Paper/mvsnerf.png" width="90%" alt="MVSNeRF" class="img-fluid" />
+              </div>
+            <div class="col-md-9 col-12 paper-content">
+                        <h4>MVSNeRF: Fast Generalizable Radiance Field Reconstruction from Multi-View Stereo</h4>
+                        <p class="authors">Anpei Chen, Zexiang Xu, <strong>Fuqiang Zhao</strong>, Xiaoshuai Zhang, Fanbo Xiang, Jingyi Yu, Hao Su</p>
+                        <p class="venue">ICCV 2021</p>
+                        <div class="paper-links">
+                            <a href="https://apchenstu.github.io/mvsnerf/" class="btn btn-sm btn-outline-primary">Project</a>
+                            <a href="https://arxiv.org/abs/2103.15595" class="btn btn-sm btn-outline-primary">Arxiv</a>
+                            <a href="https://github.com/apchenstu/mvsnerf" class="btn btn-sm btn-outline-primary">Code</a>
+                        </div>
+            </div>
+          </div>
+
+          <div class="row paper-box">
+            <div class="col-md-3 col-12 paper_img"> 
+                        <img src="files/Paper/editable.png" width="90%" alt="Editable" class="img-fluid" />
+                  </div>
+                <div class="col-md-9 col-12 paper-content">
+                  <h4>Editable Free-Viewpoint Video using a Layered Neural Representation</h4>
+                        <p class="authors">Jiakai Zhang, Xinhang Liu, Xinyi Ye, <strong>Fuqiang Zhao</strong>, Yanshun Zhang, Minye Wu, Yingliang Zhang, Lan Xu and Jingyi Yu</p>
+                        <p class="venue">SIGGRAPH 2021</p>
+                        <div class="paper-links">
+                            <a href="https://jiakai-zhang.github.io/st-nerf/" class="btn btn-sm btn-outline-primary">Project</a>
+                            <a href="https://arxiv.org/pdf/2104.14786.pdf" class="btn btn-sm btn-outline-primary">Arxiv</a>
+                            <a href="https://github.com/DarlingHang/st-nerf" class="btn btn-sm btn-outline-primary">Code</a>
+                            <a href="https://www.youtube.com/watch?v=UrB-tqA8oeg&t=2s" class="btn btn-sm btn-outline-primary">Video</a>
+                        </div>
+                    </div>
+                </div>
+
+          <div class="row paper-box">
+            <div class="col-md-3 col-12 paper_img"> 
+                        <img src="files/Paper/mirrornerf.png" width="90%" alt="MirrorNeRF" class="img-fluid" />
+              </div>
+            <div class="col-md-9 col-12 paper-content">
+                        <h4>MirrorNeRF: One-shot Neural Portrait Radiance Field from Multi-mirror Catadioptric Imaging</h4>
+                        <p class="authors">Ziyu Wang, Liao Wang, <strong>Fuqiang Zhao</strong>, Minye Wu, Lan Xu, Jingyi Yu</p>
+                        <p class="venue">ICCP 2021</p>
+                        <div class="paper-links">
+                            <a href="#" class="btn btn-sm btn-outline-primary">Project</a>
+                            <a href="https://arxiv.org/pdf/2104.02607.pdf" class="btn btn-sm btn-outline-primary">Arxiv</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="year-section">
+                <div class="paper-box">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4>NeuDim Digital Technology Inc. - 上海赜深数字科技有限公司</h4>
+                            <p class="venue">CEO & Founder | July 2022 - Present</p>
+                            <ul class="experience-list">
+                                <li>Founded and led a tech startup focused on neural 3D/4D reconstruction</li>
+                                <li>Developed innovative neural approaches to replace traditional photogrammetry</li>
+                                <li>Built a team of PhD researchers with expertise in neural modeling and rendering</li>
+                            </ul>
+                            <div class="paper-links">
+                                <a href="http://neudim.com/" class="btn btn-sm btn-outline-primary">Company Website</a>
+                </div>
+              </div>
+            </div>
+                </div>
+
+                <div class="paper-box">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4>DGene Digital Technology Inc. - 上海叠境数字科技有限公司</h4>
+                            <p class="venue">R&D Intern | January 2022 - September 2022</p>
+                            <p>Conducted research and development in computer vision and 3D reconstruction technologies.</p>
+                            <div class="paper-links">
+                                <a href="https://www.dgene.com/cn/" class="btn btn-sm btn-outline-primary">Company Website</a>
             </div>
           </div>
         </div>
-        <h3 class="w3_head mb-5">Education</h3>
-        <div class="row service_w3top mt-5">
-          <div class="col-xl-12">
-            <div class="d-flex experience-box">
-              <div class="icon"> <span class="fa fa-graduation-cap"></span> </div>
-              <!-- .Icon ends here -->
-              <div class="service-content">
-                <div class="d-md-flex justify-content-between">
-                  <h4><a href="http://www.shanghaitech.edu.cn/eng/">ShanghaiTech University - 上海科技大学</a></h4>
-                  <h4>Sep. 2020 - Present </h4>
                 </div>
-                <h4> Ph.D Candidate</h4>
-                <p>I now am a Ph.D candidate on computer vision research, advised by <a href="http://www.yu-jingyi.com/">Prof. Jingyi Yu</a> 
-                  and developed a light-weight framework for rendering 3D dynamic humans from a six RGB cameras.</p>
-                <br>
-              </div>
-              <!-- .Service-content ends here -->
             </div>
-            <div class="d-flex experience-box">
-              <div class="icon"> <span class="fa fa-graduation-cap"></span> </div>
-              <!-- .Icon ends here -->
-              <div class="service-content">
-                <div class="d-md-flex justify-content-between">
-                  <h4><a href="http://english.upc.edu.cn/">China University of Petroleum - 中国石油大学(华东)</a></h4>
-                  <h4>Sep. 2016 - Jul. 2020 </h4>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="year-section">
+                <div class="paper-box">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4>ShanghaiTech University - 上海科技大学</h4>
+                            <p class="venue">Ph.D Candidate in Computer Science | September 2020 - Present</p>
+                            <ul class="experience-list">
+                                <li>Research Focus: Neural Rendering, 3D Reconstruction, and 3D Generative AI</li>
+                                <li>Published multiple papers in top-tier conferences (CVPR, SIGGRAPH, ICCV)</li>
+                                <li>Advised by Prof. Jingyi Yu, Executive Dean of SIST</li>
+                            </ul>
+                            <div class="paper-links">
+                                <a href="http://www.shanghaitech.edu.cn/eng/" class="btn btn-sm btn-outline-primary">University Website</a>
+                                <a href="http://www.yu-jingyi.com/" class="btn btn-sm btn-outline-primary">Advisor's Page</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h4> Bachelor </h4>
-                <p>I obtained my B.E. in software engineering at China University of Petroleum and won honorable awards
-                  including: </p>
+
+                <div class="paper-box">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4>China University of Petroleum - 中国石油大学(华东)</h4>
+                            <p class="venue">Bachelor of Engineering in Software Engineering | September 2016 - July 2020</p>
+                            <ul class="experience-list">
                 <li>Outstanding Graduates of China University of Petroleum 2020</li>
                 <li>First Prize of Shandong Software Design Competition 2018</li>
                 <li>National Inspirational Scholarship 2017,2018</li>
                 <li>Merit Student 2017,2018</li>
+                            </ul>
+                            <div class="paper-links">
+                                <a href="http://english.upc.edu.cn/" class="btn btn-sm btn-outline-primary">University Website</a>
+                            </div>
               </div>
-              <!-- .Service-content ends here -->
             </div>
           </div>
         </div>
       </div>
     </section>
 
-        <!-- Supervisors -->
-    <section class="wedo" id="-Supervisors">
-      <h3 class="w3_head col-md-12 mb-12"> Supervisors </h3>
-      <div id="id4" style="clear:both"></div>
-      <div class="col-md-5 col-12 people-content">
-        <p class="banp mt-5"> <a href="http://www.yu-jingyi.com/">Prof. Jingyi Yu</a> - Supervisor </p>
-        <li>Executive Dean, SIST, ShanghaiTech University</li>
-        <li>Ph.D.'s degree, MIT, 2005</li>
-      </div>
-      <div id="id4" style="clear:both"></div>
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Get in Touch</h5>
+                            <ul class="contact-info">
+                                <li><i class="fas fa-envelope"></i> <a href="mailto:zhaofq@shanghaitech.edu.cn">zhaofq@shanghaitech.edu.cn</a></li>
+                                <li><i class="fas fa-map-marker-alt"></i> ShanghaiTech University, Shanghai, China</li>
+      </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Connect</h5>
+                            <div class="d-flex gap-3">
+                                <a href="https://github.com/zhaofuq" class="btn btn-outline-primary"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://www.linkedin.com/in/fuqiang-zhao-190227208/" class="btn btn-outline-primary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                                <a href="https://scholar.google.com/citations?user=_LoTgnIAAAAJ" class="btn btn-outline-primary"><i class="fas fa-graduation-cap"></i> Scholar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- //skill -->
-    <section class="wedo" id="skill">
-      <h3 class="w3_head mb-1">Skills </h3>
-      <p class="banp mt-5"> Programming Languages</p>
-      <ul class="fa-ul mb-0">
-        <li> <i class="fa-li fa fa-check"></i> C++, CUDA and so on. </li>
-        <li> <i class="fa-li fa fa-check"></i> Python (Pytorch and so on.)</li>
-        <li> <i class="fa-li fa fa-check"></i> WebGL, javascript and so on.</li>
-      </ul>
-      <p class="banp mt-5"> Others</p>
-      <ul class="fa-ul mb-0">
-        <li> <i class="fa-li fa fa-check"></i> Latex, Markdown</li>
-
-      </ul>
-    </section>
-    <!-- //skill -->
+    <!-- Footer -->
+    <!-- <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">© 2024 Fuqiang Zhao. All rights reserved.</p>
   </div>
+    </footer> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-	var newsBoxMoreBtn = document.getElementById('news-box-more')
-	var newsBox = document.getElementById('news-box');
-	var flag = false;
-	newsBoxMoreBtn.addEventListener('click',function(){
-		flag = !flag;
-		if(flag){
-			newsBox.style.height = 'auto';
-			newsBoxMoreBtn.innerHTML = 'CLOSE <<'
-		}
-		else{
-			newsBox.style.height = '75px';
-			newsBoxMoreBtn.innerHTML = 'MORE >>'
-		}
-		
-	})
+        // 返回顶部按钮功能
+        const backToTopButton = document.getElementById('backToTop');
+        
+        // 监听滚动事件
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) { // 当页面滚动超过300px时显示按钮
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        // 点击按钮返回顶部
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // 平滑滚动
+            });
+        });
   </script>
 </body>
-
 </html>
