@@ -489,6 +489,7 @@
             color: #3498db;
             font-size: 1.8rem;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .social-icon:hover {
@@ -835,6 +836,60 @@
                 font-size: 1.4rem;
             }
         }
+
+        .cv-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .cv-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .cv-button i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .cv-button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        .tooltip {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .tooltip .tooltip-inner {
+            background-color: #ffffff;
+            color: #2c3e50;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            max-width: 300px;
+        }
+
+        .tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+            border-bottom-color: #ffffff;
+        }
+
+        .tooltip.bs-tooltip-top .tooltip-arrow::before {
+            border-top-color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -880,17 +935,29 @@
                     <img src="images/zhaofq-middle.jpg" alt="Fuqiang Zhao" class="profile-image img-fluid rounded-circle mb-4">
                     <h2 class="name-title">Fuqiang Zhao</h2>
                     <p class="name-cn">赵富强</p>
+                    <p class="affiliation">NeuDim Founder </br> ShanghaiTech University  </p>
                     <div class="social-links mt-4">
-                        <a href="mailto:zhaofq@shanghaitech.edu.cn" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="https://scholar.google.com/citations?user=_LoTgnIAAAAJ" class="social-icon" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                        <a href="https://github.com/zhaofuq" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/fuqiang-zhao-190227208/" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:zhaofq@shanghaitech.edu.cn" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Email: zhaofq@shanghaitech.edu.cn">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=_LoTgnIAAAAJ" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Google Scholar">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://github.com/zhaofuq" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/fuqiang-zhao-190227208/" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="files\CV\CV_Zhao_EN.pdf" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Download CV" target="_blank">
+                            <i class="fas fa-file-alt"></i>
+                        </a>
                     </div>
-      </div>
+                </div>
                 <div class="col-md-9">
                     <div class="about-content">
                         <div class="title-info mb-4">
-                            <h3 class="position-title">Ph.D Candidate in Computer Science | Computer Vision Researcher | Entrepreneur</h3>
+                            <h3 class="position-title">Ph.D Candidate in Computer Science | Computer Vision Researcher | Startup Founder</h3>
                             <p class="affiliation">ShanghaiTech University | NeuDim Digital Technology Inc.</p>
   </div>
                         <p class="intro-text">
@@ -913,7 +980,7 @@
                                 <h3 class="section-subtitle">Academic Services</h3>
                                 <div class="service-item">
                                     <h4 class="service-title">Conference Reviewer</h4>
-                                    <p>SIGGRAPH, CVPR, ICCV, ECCV</p>
+                                    <p>SIGGRAPH, CVPR, ICCV, ECCV, ...</p>
 		   </div>
         </div>
       </div>
@@ -1251,6 +1318,12 @@
                 behavior: 'smooth' // 平滑滚动
             });
         });
+
+        // 初始化所有的 tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
   </script>
 </body>
 </html>
