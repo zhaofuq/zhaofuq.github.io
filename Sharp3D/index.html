@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sharp3D — Multi-View Images to 3D Gaussian Scenes</title>
+    <meta
+      name="description"
+      content="Sharp3D: an academic project page template for reconstructing high-quality 3D Gaussian Splatting scenes from multiple images."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-inner">
+        <a class="brand" href="#top">Sharp3D</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#overview">Overview</a>
+          <a href="#tldr">TL;DR</a>
+          <a href="#method">Method</a>
+          <a href="#compare">Compare</a>
+          <a href="#results">Results</a>
+          <a href="#training">Training</a>
+          <a href="#bibtex">Citation</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="hero-badge">Multi-view · Feed-forward 3D Gaussian</p>
+          <h1>Sharp3D: High-Fidelity 3D Gaussian Scenes Generation from Multiple Images</h1>
+          <p class="hero-sub">
+            This project is still under active research. The page will be updated with code, data, and fuller
+            evaluations as results stabilize.
+          </p>
+          <p class="authors">
+            <span>Fuqiang Zhao</span>
+            <!-- <span>Fuqiang Zhao<sup>1</sup></span> ·
+            <span>Second Author<sup>1</sup></span> ·
+            <span>Third Author<sup>2</sup></span> -->
+          </p>
+          <p class="venue">Crysta AI &nbsp;</p>
+          <!-- <p class="venue"><sup>1</sup>Institution A &nbsp;·&nbsp; <sup>2</sup>Institution B (conference / journal TBD)</p> -->
+          <div class="btn-row">
+            <!-- <a class="btn btn-primary" href="#">Paper</a>
+            <a class="btn btn-ghost" href="#">Code</a> -->
+            <a class="btn btn-ghost" href="#overview">Overview</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview" class="fade-in" aria-label="Overview">
+        <div class="container">
+          <h2 class="section-title">Overview</h2>
+          <p class="section-lead">
+            
+            Feed-forward 3D reconstruction methods such as VGGT and Depth Anything V3 (DA3) have achieved strong performance in predicting cameras, depth, and point clouds from sparse views. 
+            However, most existing methods treat Gaussian Splatting as a byproduct of geometric prediction, without dedicated design for the Gaussian representation itself. 
+            As a result, the reconstructed Gaussians are often over-smoothed and contain redundant primitives, limiting rendering sharpness and visual fidelity.
+            
+            On the other hand, SHARP produces highly detailed and sharp Gaussian representations from a single image, but does not enforce multi-view consistency.
+            
+            We present <strong>Sharp3D</strong>, a feed-forward framework that combines the multi-view geometric priors of DA3 with the high-fidelity Gaussian generation capability of SHARP.
+            Sharp3D aligns per-view Gaussian predictions and introduces opacity-based ownership estimation to suppress duplicate Gaussians, retaining only the minimal set needed to explain the scene. During training, we keep the DA3 depth and camera modules and the SHARP backbone largely frozen, and optimize only the Gaussian head, adapter, and fusion modules.
+            Sharp3D produces multi-view consistent 3D Gaussian representations with substantially improved sharpness and realism, while preserving accurate scene geometry.
+          </p>
+          <div class="card-surface">
+            <figure class="teaser-figure">
+              <img
+                src="assets/teaser.png"
+                alt="Sharp3D teaser: multi-view inputs to 3D Gaussian scene reconstruction"
+                loading="eager"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="tldr" class="fade-in" aria-label="TL;DR">
+        <div class="container">
+          <h2 class="section-title">TL;DR</h2>
+          <p class="section-lead" style="margin-bottom: 1rem">
+            <strong>Sharp3D</strong> is a feed-forward framework for sparse views: it keeps strong multi-view geometry in
+            the spirit of DA3 (cameras, depth, structure), then predicts Gaussians in a SHARP-like regime—sharp and
+            detailed, but aligned across views—without the over-smoothed or redundant splats common when Gaussians are
+            only a side output of geometry-first models.
+          </p>
+          <ul class="pill-list">
+            <li>One forward pass · no per-scene optimization</li>
+            <li>DA3-style geometry priors + SHARP-style splat head</li>
+            <li>Three-stage training: geometry filter → ownership → joint finetune</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="method" class="fade-in">
+        <div class="container">
+          <h2 class="section-title">Method</h2>
+          <p class="section-lead">
+            <strong>Sharp3D</strong> runs in one feed-forward pass: sparse views first yield DA3-style geometric priors
+            (cameras, depth, and scene structure); these cues then condition a SHARP-style Gaussian head that predicts
+            3D splats—sharp and detailed, but aligned across views—with geometry preserved end-to-end.
+          </p>
+          <div class="card-surface">
+            <figure class="pipeline-figure">
+              <img
+                src="assets/pipeline.png"
+                alt="Sharp3D method pipeline: geometric and Gaussian branches"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="compare" class="fade-in" aria-label="Comparison">
+        <div class="container">
+          <h2 class="section-title">Compare: Ours vs StraightForward</h2>
+          <p class="section-lead">
+            <strong>Ours</strong> is our full <strong>Sharp3D</strong> method. <strong>StraightForward</strong> is a naive
+            baseline built by taking the cameras and geometry as <strong>DA3</strong> calibrates and predicts, then
+            combining them with <strong>SHARP</strong>&rsquo;s Gaussian-splatting output in a direct pipeline—DA3
+            geometry and SHARP splats stitched together without Sharp3D&rsquo;s geometry filtering, ownership preserving,
+            or joint finetuning stages. Drag the divider to compare. 
+          </p>
+          <div class="carousel card-surface compare-carousel" data-carousel>
+            <div class="carousel-viewport compare-carousel-viewport">
+              <div class="carousel-track" data-carousel-track>
+                <div class="carousel-slide compare-carousel-slide" data-carousel-slide>
+                  <h3 class="compare-slide-title">Bird</h3>
+                  <p class="compare-slide-caption">Bird — same viewpoint and framing as the slider baseline.</p>
+                  <div class="compare-slider">
+                    <div class="compare-labels" aria-hidden="true">
+                      <span class="compare-label compare-label--ours">Ours</span>
+                      <span class="compare-label compare-label--baseline">StraightForward</span>
+                    </div>
+                    <div class="compare-viewport" data-compare-viewport style="--compare-x: 50%">
+                      <img
+                        class="compare-img compare-img--baseline"
+                        src="assets/Comparison/Bird/straightforward.png"
+                        alt="StraightForward baseline, Bird scene"
+                        draggable="false"
+                        loading="lazy"
+                      />
+                      <img
+                        class="compare-img compare-img--ours"
+                        src="assets/Comparison/Bird/ours.png"
+                        alt="Sharp3D ours, Bird scene"
+                        draggable="false"
+                        loading="lazy"
+                      />
+                      <div class="compare-divider">
+                        <span class="compare-grip" aria-hidden="true"></span>
+                      </div>
+                    </div>
+                    <p class="compare-hint">Drag the center line left or right.</p>
+                  </div>
+                </div>
+                <div class="carousel-slide compare-carousel-slide" data-carousel-slide>
+                  <h3 class="compare-slide-title">Cat</h3>
+                  <p class="compare-slide-caption">Cat — aligned renders for the same comparison protocol.</p>
+                  <div class="compare-slider">
+                    <div class="compare-labels" aria-hidden="true">
+                      <span class="compare-label compare-label--ours">Ours</span>
+                      <span class="compare-label compare-label--baseline">StraightForward</span>
+                    </div>
+                    <div class="compare-viewport" data-compare-viewport style="--compare-x: 50%">
+                      <img
+                        class="compare-img compare-img--baseline"
+                        src="assets/Comparison/Cat/straightforward.png"
+                        alt="StraightForward baseline, Cat scene"
+                        draggable="false"
+                        loading="lazy"
+                      />
+                      <img
+                        class="compare-img compare-img--ours"
+                        src="assets/Comparison/Cat/ours.png"
+                        alt="Sharp3D ours, Cat scene"
+                        draggable="false"
+                        loading="lazy"
+                      />
+                      <div class="compare-divider">
+                        <span class="compare-grip" aria-hidden="true"></span>
+                      </div>
+                    </div>
+                    <p class="compare-hint">Drag the center line left or right.</p>
+                  </div>
+                </div>
+                <div class="carousel-slide compare-carousel-slide" data-carousel-slide>
+                  <h3 class="compare-slide-title">Garden</h3>
+                  <p class="compare-slide-caption">Garden — same naming and layout as Bird and Cat.</p>
+                  <div class="compare-slider">
+                    <div class="compare-labels" aria-hidden="true">
+                      <span class="compare-label compare-label--ours">Ours</span>
+                      <span class="compare-label compare-label--baseline">StraightForward</span>
+                    </div>
+                    <div class="compare-viewport" data-compare-viewport style="--compare-x: 50%">
+                      <img
+                        class="compare-img compare-img--baseline"
+                        src="assets/Comparison/Garden/straightforward.png"
+                        alt="StraightForward baseline, Garden scene"
+                        draggable="false"
+                        loading="lazy"
+                      />
+                      <img
+                        class="compare-img compare-img--ours"
+                        src="assets/Comparison/Garden/ours.png"
+                        alt="Sharp3D ours, Garden scene"
+                        draggable="false"
+                        loading="lazy"
+                      />
+                      <div class="compare-divider">
+                        <span class="compare-grip" aria-hidden="true"></span>
+                      </div>
+                    </div>
+                    <p class="compare-hint">Drag the center line left or right.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-nav">
+              <button type="button" class="carousel-btn" data-carousel-dir="prev" aria-label="Previous comparison">‹</button>
+              <div class="carousel-dots" data-carousel-dots></div>
+              <button type="button" class="carousel-btn" data-carousel-dir="next" aria-label="Next comparison">›</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="fade-in">
+        <div class="container">
+          <h2 class="section-title">Qualitative Results</h2>
+          <p class="section-lead">
+            More Interactive results will be added soon.
+          </p>
+          <div class="carousel card-surface results-carousel" data-carousel>
+            <div class="carousel-viewport results-carousel-viewport">
+              <div class="carousel-track" data-carousel-track>
+                <div class="carousel-slide results-carousel-slide" data-carousel-slide>
+                  <h3 class="results-slide-title">Indoor scene</h3>
+                  <p class="results-slide-caption">
+                    Coming Soon.
+                  </p>
+                  <div class="results-showcase">
+                    <!--
+                      Remote assets: use full URLs in src, e.g.
+                      https://huggingface.co/you/dataset/resolve/main/indoor/view1.jpg
+                      PLY: pass the same URL to your viewer script or iframe, e.g. ?url=https://…/scene1.ply
+                      Remove unused thumb <button> blocks if a scene has only 2 or 3 views.
+                    -->
+                    <aside class="results-thumbs" aria-label="Input views, scene 1 (placeholders)">
+                      <button type="button" class="results-thumb-btn is-active" aria-pressed="true">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                    </aside>
+                    <div class="results-viewer" aria-label="3D Gaussian splat rendering, scene 1">
+                      <div class="results-viewer-chrome">
+                        <span class="results-viewer-title">Gaussian preview · scene 1</span>
+                      </div>
+                      <div class="results-viewer-frame">
+                        <div class="results-viewer-placeholder" role="status">
+                          <strong>Coming Soon</strong>
+                          <span class="results-soon-sub">Interactive Gaussian viewer (e.g. WebGL / iframe + remote PLY)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-slide results-carousel-slide" data-carousel-slide>
+                  <h3 class="results-slide-title">Outdoor scene</h3>
+                  <p class="results-slide-caption">
+                    Coming Soon.
+                  </p>
+                  <div class="results-showcase">
+                    <aside class="results-thumbs" aria-label="Input views, scene 2 (placeholders)">
+                      <button type="button" class="results-thumb-btn is-active" aria-pressed="true">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                    </aside>
+                    <div class="results-viewer" aria-label="3D Gaussian splat rendering, scene 2">
+                      <div class="results-viewer-chrome">
+                        <span class="results-viewer-title">Gaussian preview · scene 2</span>
+                      </div>
+                      <div class="results-viewer-frame">
+                        <div class="results-viewer-placeholder" role="status">
+                          <strong>Coming Soon</strong>
+                          <span class="results-soon-sub">Interactive Gaussian viewer (e.g. WebGL / iframe + remote PLY)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-slide results-carousel-slide" data-carousel-slide>
+                  <h3 class="results-slide-title">Challenging materials</h3>
+                  <p class="results-slide-caption">
+                    Coming Soon.
+                  </p>
+                  <div class="results-showcase">
+                    <aside class="results-thumbs" aria-label="Input views, scene 3 (placeholders)">
+                      <button type="button" class="results-thumb-btn is-active" aria-pressed="true">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <span class="results-thumb-placeholder">Coming Soon</span>
+                      </button>
+                    </aside>
+                    <div class="results-viewer" aria-label="3D Gaussian splat rendering, scene 3">
+                      <div class="results-viewer-chrome">
+                        <span class="results-viewer-title">Gaussian preview · scene 3</span>
+                      </div>
+                      <div class="results-viewer-frame">
+                        <div class="results-viewer-placeholder" role="status">
+                          <strong>Coming Soon</strong>
+                          <span class="results-soon-sub">Interactive Gaussian viewer (e.g. WebGL / iframe + remote PLY)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-nav">
+              <button type="button" class="carousel-btn" data-carousel-dir="prev" aria-label="Previous result set">‹</button>
+              <div class="carousel-dots" data-carousel-dots></div>
+              <button type="button" class="carousel-btn" data-carousel-dir="next" aria-label="Next result set">›</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="training" class="fade-in" aria-label="Three-stage training">
+        <div class="container">
+          <h2 class="section-title">Three-stage Training</h2>
+          <p class="section-lead">
+            <strong>Sharp3D</strong> is trained in three sequential stages: geometry is cleaned first, cross-view
+            ownership of Gaussians is stabilized, then the full stack is refined jointly. Link checkpoints or configs per
+            stage here when you release them.
+          </p>
+          <div class="spec-grid">
+            <div class="spec-card">
+              <h3>Stage 1 · Geometry Filtering Training</h3>
+              <p>
+                Trains or adapts the multi-view geometric pathway so cameras, depth, and structure are filtered into
+                reliable signals for the Gaussian branch—reducing noise that would otherwise smear or duplicate splats.
+              </p>
+            </div>
+            <div class="spec-card">
+              <h3>Stage 2 · Ownership Preserving Training</h3>
+              <p>
+                Encourages each Gaussian to maintain consistent responsibility across views—so appearance and geometry
+                stay aligned with sparse inputs before full joint optimization.
+              </p>
+            </div>
+            <div class="spec-card">
+              <h3>Stage 3 · Joint Finetuning</h3>
+              <p>
+                End-to-end finetuning of geometry and splat parameters together for sharp, multi-view consistent renders
+                while preserving the scene layout learned in earlier stages.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="bibtex" class="fade-in">
+        <div class="container">
+          <h2 class="section-title">Citation</h2>
+          <p class="section-lead">Replace with the official BibTeX entry after acceptance.</p>
+          <pre class="bibtex"><code>@misc{sharp3d2026,
+  title        = {Sharp3D: High-Fidelity 3D Gaussian Scenes Generation from Multiple Image},
+  author       = {Fuqiao Zhao},
+  year         = {2026},
+  howpublished = {https://zhaofuq.github.io/Sharp3D/},
+  note         = {Project page}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <strong>Sharp3D</strong> — project page. Sharp3D is ongoing research; this page will be updated as we release
+        code, data, and fuller experimental results.
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
