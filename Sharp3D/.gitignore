@@ -1,0 +1,4 @@
+node_modules/
+scripts/
+assets/Results/**/*.ply
+assets/Results/**/*.spz

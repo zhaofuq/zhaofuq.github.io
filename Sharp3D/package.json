@@ -1,0 +1,12 @@
+{
+  "name": "sharp3d",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "assets:spz": "node scripts/convert-results-to-spz.mjs"
+  },
+  "devDependencies": {
+    "@sparkjsdev/spark": "2.0.0"
+  }
+}

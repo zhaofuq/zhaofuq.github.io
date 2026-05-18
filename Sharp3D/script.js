@@ -31,7 +31,8 @@
     if (!track || !slides.length) return;
 
     let index = 0;
-    let autoplay = window.setInterval(() => step(1), 7000);
+    const autoplayDisabled = carousel.dataset.carouselAutoplay === "false";
+    let autoplay = null;
     let touchStartX = null;
 
     function render() {
@@ -39,6 +40,9 @@
       dotsRoot?.querySelectorAll("button").forEach((dot, i) => {
         dot.setAttribute("aria-current", i === index ? "true" : "false");
       });
+      carousel.dispatchEvent(
+        new CustomEvent("carousel:change", { bubbles: true, detail: { index, slide: slides[index] } })
+      );
     }
 
     function step(delta) {
@@ -47,8 +51,13 @@
     }
 
     function resetAutoplay() {
+      if (autoplayDisabled) return;
       window.clearInterval(autoplay);
       autoplay = window.setInterval(() => step(1), 7000);
+    }
+
+    if (!autoplayDisabled) {
+      resetAutoplay();
     }
 
     carouselApiByEl.set(carousel, { step, resetAutoplay });
@@ -75,8 +84,10 @@
       resetAutoplay();
     });
 
-    carousel.addEventListener("mouseenter", () => window.clearInterval(autoplay));
-    carousel.addEventListener("mouseleave", resetAutoplay);
+    if (!autoplayDisabled) {
+      carousel.addEventListener("mouseenter", () => window.clearInterval(autoplay));
+      carousel.addEventListener("mouseleave", resetAutoplay);
+    }
 
     carousel.addEventListener(
       "touchstart",

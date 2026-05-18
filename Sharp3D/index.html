@@ -218,6 +218,36 @@
                     <p class="compare-hint">Drag the center line left or right.</p>
                   </div>
                 </div>
+                <div class="carousel-slide compare-carousel-slide" data-carousel-slide>
+                  <h3 class="compare-slide-title">Street</h3>
+                  <p class="compare-slide-caption">Street.</p>
+                  <div class="compare-slider">
+                    <div class="compare-labels" aria-hidden="true">
+                      <span class="compare-label compare-label--ours">Ours</span>
+                      <span class="compare-label compare-label--baseline">StraightForward</span>
+                    </div>
+                    <div class="compare-viewport" data-compare-viewport style="--compare-x: 50%">
+                      <img
+                        class="compare-img compare-img--baseline"
+                        src="assets/Comparison/Street/straightforward.png"
+                        alt="StraightForward baseline, Street scene"
+                        draggable="false"
+                        loading="lazy"
+                      />
+                      <img
+                        class="compare-img compare-img--ours"
+                        src="assets/Comparison/Street/ours.png"
+                        alt="Sharp3D ours, Street scene"
+                        draggable="false"
+                        loading="lazy"
+                      />
+                      <div class="compare-divider">
+                        <span class="compare-grip" aria-hidden="true"></span>
+                      </div>
+                    </div>
+                    <p class="compare-hint">Drag the center line left or right.</p>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="carousel-nav">
@@ -233,111 +263,211 @@
         <div class="container">
           <h2 class="section-title">Qualitative Results</h2>
           <p class="section-lead">
-            More Interactive results will be added soon.
+            Sparse input views (left) and the reconstructed 3D Gaussian scene (right). Drag to orbit,
+            scroll to zoom. Switch scenes with the arrows; click Load 3D Gaussian to load each model.
           </p>
-          <div class="carousel card-surface results-carousel" data-carousel>
+          <div class="carousel card-surface results-carousel" data-carousel data-carousel-autoplay="false">
             <div class="carousel-viewport results-carousel-viewport">
               <div class="carousel-track" data-carousel-track>
                 <div class="carousel-slide results-carousel-slide" data-carousel-slide>
-                  <h3 class="results-slide-title">Indoor scene</h3>
+                  <h3 class="results-slide-title">Bird</h3>
                   <p class="results-slide-caption">
-                    Coming Soon.
+                    Three sparse views → feed-forward 3D Gaussian reconstruction.
                   </p>
                   <div class="results-showcase">
-                    <!--
-                      Remote assets: use full URLs in src, e.g.
-                      https://huggingface.co/you/dataset/resolve/main/indoor/view1.jpg
-                      PLY: pass the same URL to your viewer script or iframe, e.g. ?url=https://…/scene1.ply
-                      Remove unused thumb <button> blocks if a scene has only 2 or 3 views.
-                    -->
-                    <aside class="results-thumbs" aria-label="Input views, scene 1 (placeholders)">
+                    <aside class="results-thumbs results-thumbs--count-3" aria-label="Input views, Bird">
                       <button type="button" class="results-thumb-btn is-active" aria-pressed="true">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/Bird/bird1.jpg"
+                          alt="Bird input view 1"
+                          loading="lazy"
+                          draggable="false"
+                        />
                       </button>
                       <button type="button" class="results-thumb-btn" aria-pressed="false">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/Bird/bird2.jpg"
+                          alt="Bird input view 2"
+                          loading="lazy"
+                          draggable="false"
+                        />
                       </button>
                       <button type="button" class="results-thumb-btn" aria-pressed="false">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
-                      </button>
-                      <button type="button" class="results-thumb-btn" aria-pressed="false">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/Bird/bird3.jpg"
+                          alt="Bird input view 3"
+                          loading="lazy"
+                          draggable="false"
+                        />
                       </button>
                     </aside>
-                    <div class="results-viewer" aria-label="3D Gaussian splat rendering, scene 1">
+                    <div class="results-viewer" aria-label="3D Gaussian splat rendering, Bird">
                       <div class="results-viewer-chrome">
-                        <span class="results-viewer-title">Gaussian preview · scene 1</span>
+                        <span class="results-viewer-title">3D Gaussian · Bird</span>
                       </div>
-                      <div class="results-viewer-frame">
-                        <div class="results-viewer-placeholder" role="status">
-                          <strong>Coming Soon</strong>
-                          <span class="results-soon-sub">Interactive Gaussian viewer (e.g. WebGL / iframe + remote PLY)</span>
+                      <div
+                        class="results-viewer-frame"
+                        data-ply="https://huggingface.co/datasets/zhaofq/Sharp3D/resolve/main/bird.spz"
+                        data-scene="bird"
+                        tabindex="0"
+                        aria-label="Interactive 3D Gaussian viewer"
+                      >
+                        <div class="results-viewer-progress">
+                          <div class="results-viewer-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Loading progress">
+                            <div class="results-viewer-progress-bar"></div>
+                          </div>
+                          <p class="results-viewer-progress-label">Loading…</p>
+                        </div>
+                        <div class="results-viewer-idle">
+                          <button type="button" class="results-load-btn">
+                            <svg class="results-load-btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                              <path d="M8 2.5v7.2M5.2 6.9 8 4.1l2.8 2.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M3 12.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                            </svg>
+                            <span class="results-load-btn-label">Load 3D Gaussian</span>
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="carousel-slide results-carousel-slide" data-carousel-slide>
-                  <h3 class="results-slide-title">Outdoor scene</h3>
+                  <h3 class="results-slide-title">Cat</h3>
                   <p class="results-slide-caption">
-                    Coming Soon.
+                    Four sparse views → feed-forward 3D Gaussian reconstruction.
                   </p>
                   <div class="results-showcase">
-                    <aside class="results-thumbs" aria-label="Input views, scene 2 (placeholders)">
+                    <aside class="results-thumbs results-thumbs--count-4" aria-label="Input views, Cat">
                       <button type="button" class="results-thumb-btn is-active" aria-pressed="true">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/Cat/cat1.jpg"
+                          alt="Cat input view 1"
+                          loading="lazy"
+                          draggable="false"
+                        />
                       </button>
                       <button type="button" class="results-thumb-btn" aria-pressed="false">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/Cat/cat2.jpg"
+                          alt="Cat input view 2"
+                          loading="lazy"
+                          draggable="false"
+                        />
                       </button>
                       <button type="button" class="results-thumb-btn" aria-pressed="false">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/Cat/cat3.jpg"
+                          alt="Cat input view 3"
+                          loading="lazy"
+                          draggable="false"
+                        />
                       </button>
                       <button type="button" class="results-thumb-btn" aria-pressed="false">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/Cat/cat4.jpg"
+                          alt="Cat input view 4"
+                          loading="lazy"
+                          draggable="false"
+                        />
                       </button>
                     </aside>
-                    <div class="results-viewer" aria-label="3D Gaussian splat rendering, scene 2">
+                    <div class="results-viewer" aria-label="3D Gaussian splat rendering, Cat">
                       <div class="results-viewer-chrome">
-                        <span class="results-viewer-title">Gaussian preview · scene 2</span>
+                        <span class="results-viewer-title">3D Gaussian · Cat</span>
                       </div>
-                      <div class="results-viewer-frame">
-                        <div class="results-viewer-placeholder" role="status">
-                          <strong>Coming Soon</strong>
-                          <span class="results-soon-sub">Interactive Gaussian viewer (e.g. WebGL / iframe + remote PLY)</span>
+                      <div
+                        class="results-viewer-frame"
+                        data-ply="https://huggingface.co/datasets/zhaofq/Sharp3D/resolve/main/cat.spz"
+                        data-scene="cat"
+                        tabindex="0"
+                        aria-label="Interactive 3D Gaussian viewer"
+                      >
+                        <div class="results-viewer-progress">
+                          <div class="results-viewer-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Loading progress">
+                            <div class="results-viewer-progress-bar"></div>
+                          </div>
+                          <p class="results-viewer-progress-label">Loading…</p>
+                        </div>
+                        <div class="results-viewer-idle">
+                          <button type="button" class="results-load-btn">
+                            <svg class="results-load-btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                              <path d="M8 2.5v7.2M5.2 6.9 8 4.1l2.8 2.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M3 12.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                            </svg>
+                            <span class="results-load-btn-label">Load 3D Gaussian</span>
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="carousel-slide results-carousel-slide" data-carousel-slide>
-                  <h3 class="results-slide-title">Challenging materials</h3>
+                  <h3 class="results-slide-title">Street</h3>
                   <p class="results-slide-caption">
-                    Coming Soon.
+                    Three sparse views → feed-forward 3D Gaussian reconstruction.
                   </p>
                   <div class="results-showcase">
-                    <aside class="results-thumbs" aria-label="Input views, scene 3 (placeholders)">
+                    <aside class="results-thumbs results-thumbs--count-3" aria-label="Input views, Street">
                       <button type="button" class="results-thumb-btn is-active" aria-pressed="true">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/Street/street1.png"
+                          alt="Street input view 1"
+                          loading="lazy"
+                          draggable="false"
+                        />
                       </button>
                       <button type="button" class="results-thumb-btn" aria-pressed="false">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/Street/street2.png"
+                          alt="Street input view 2"
+                          loading="lazy"
+                          draggable="false"
+                        />
                       </button>
                       <button type="button" class="results-thumb-btn" aria-pressed="false">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
-                      </button>
-                      <button type="button" class="results-thumb-btn" aria-pressed="false">
-                        <span class="results-thumb-placeholder">Coming Soon</span>
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/Street/street3.png"
+                          alt="Street input view 3"
+                          loading="lazy"
+                          draggable="false"
+                        />
                       </button>
                     </aside>
-                    <div class="results-viewer" aria-label="3D Gaussian splat rendering, scene 3">
+                    <div class="results-viewer" aria-label="3D Gaussian splat rendering, Street">
                       <div class="results-viewer-chrome">
-                        <span class="results-viewer-title">Gaussian preview · scene 3</span>
+                        <span class="results-viewer-title">3D Gaussian · Street</span>
                       </div>
-                      <div class="results-viewer-frame">
-                        <div class="results-viewer-placeholder" role="status">
-                          <strong>Coming Soon</strong>
-                          <span class="results-soon-sub">Interactive Gaussian viewer (e.g. WebGL / iframe + remote PLY)</span>
+                      <div
+                        class="results-viewer-frame"
+                        data-ply="https://huggingface.co/datasets/zhaofq/Sharp3D/resolve/main/street.spz"
+                        data-scene="street"
+                        tabindex="0"
+                        aria-label="Interactive 3D Gaussian viewer"
+                      >
+                        <div class="results-viewer-progress">
+                          <div class="results-viewer-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Loading progress">
+                            <div class="results-viewer-progress-bar"></div>
+                          </div>
+                          <p class="results-viewer-progress-label">Loading…</p>
+                        </div>
+                        <div class="results-viewer-idle">
+                          <button type="button" class="results-load-btn">
+                            <svg class="results-load-btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                              <path d="M8 2.5v7.2M5.2 6.9 8 4.1l2.8 2.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M3 12.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                            </svg>
+                            <span class="results-load-btn-label">Load 3D Gaussian</span>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -394,7 +524,7 @@
           <p class="section-lead">Replace with the official BibTeX entry after acceptance.</p>
           <pre class="bibtex"><code>@misc{sharp3d2026,
   title        = {Sharp3D: High-Fidelity 3D Gaussian Scenes Generation from Multiple Image},
-  author       = {Fuqiao Zhao},
+  author       = {Fuqiang Zhao},
   year         = {2026},
   howpublished = {https://zhaofuq.github.io/Sharp3D/},
   note         = {Project page}
@@ -410,6 +540,433 @@
       </div>
     </footer>
 
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.180.0/three.module.js",
+        "@sparkjsdev/spark": "https://sparkjs.dev/releases/spark/2.0.0/spark.module.js"
+      }
+    }
+    </script>
+    <script type="module">
+import * as THREE from "three";
+import { SparkRenderer, SplatMesh, SparkControls } from "@sparkjsdev/spark";
+
+const viewers = new WeakMap();
+const loading = new WeakSet();
+const aborted = new WeakMap();
+/** Hugging Face Dataset: https://huggingface.co/datasets/zhaofq/Sharp3D */
+const SPLAT_ASSET_BASE = "https://huggingface.co/datasets/zhaofq/Sharp3D/resolve/main";
+
+function resolveSplatUrl(pathOrUrl) {
+  if (!pathOrUrl) return "";
+  if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
+  const name = pathOrUrl.split("/").pop();
+  return `${SPLAT_ASSET_BASE}/${name}`;
+}
+
+/** Per-scene default camera (splat centered at origin). Alt+C logs pose → paste into SCENE_CAMERAS. */
+const SCENE_CAMERAS = {
+  bird: {
+    fov: 75,
+    nearScale: 0.02,
+    farScale: 20,
+    target: [0, 0, 0],
+    position: [1.0, 3.0, -10.0],
+    quaternion: [0, 0, 0, 1],
+    lockQuaternion: true,
+  },
+  cat: {
+    fov: 75,
+    nearScale: 0.02,
+    farScale: 20,
+    target: [0, 0, 0.0],
+    quaternion: [0, 0, 0, 1],
+    position: [-4.0, 14.0, -36.75],
+    lockQuaternion: true,
+  },
+  street: {
+    fov: 45,
+    nearScale: 0.02,
+    farScale: 20,
+    target: [0, 0, 0],
+    position: [-0.13, 16.5, -45.1],
+    quaternion: [0, 0, 0, 1],
+    lockQuaternion: true,
+  },
+};
+
+const CAMERA_FALLBACK = {
+  fov: 60,
+  nearScale: 0.02,
+  farScale: 20,
+  target: [0, 0, 0],
+  distanceScale: 1.0,
+  lockQuaternion: false,
+};
+
+function getSceneId(frame) {
+  if (frame?.dataset?.scene) return frame.dataset.scene;
+  const ply = frame?.dataset?.ply || "";
+  const base = ply.split("/").pop()?.replace(/\.(ply|spz)$/i, "") || "";
+  return base.toLowerCase();
+}
+
+function getCameraConfig(frame) {
+  const id = getSceneId(frame);
+  const cfg = SCENE_CAMERAS[id] || CAMERA_FALLBACK;
+  return { ...cfg };
+}
+
+function serializeCameraState(camera, frame) {
+  const id = getSceneId(frame);
+  return {
+    scene: id,
+    position: camera.position.toArray().map((v) => +v.toFixed(4)),
+    quaternion: camera.quaternion.toArray().map((v) => +v.toFixed(4)),
+    fov: +camera.fov.toFixed(2),
+    near: +camera.near.toFixed(4),
+    far: +camera.far.toFixed(2),
+  };
+}
+
+function formatCameraHudText(state) {
+  return [
+    state.scene,
+    `position: [${state.position.join(", ")}]`,
+    `quaternion: [${state.quaternion.join(", ")}]`,
+    `fov: ${state.fov}  near: ${state.near}  far: ${state.far}`,
+  ].join("\n");
+}
+
+function ensureCameraHud(frame) {
+  let hud = frame.querySelector(".results-viewer-camera-hud");
+  if (!hud) {
+    hud = document.createElement("pre");
+    hud.className = "results-viewer-camera-hud";
+    hud.setAttribute("aria-live", "polite");
+    hud.title = "Live camera pose — Alt+C copies to console";
+    frame.appendChild(hud);
+  }
+  return hud;
+}
+
+const lastHudTextByFrame = new WeakMap();
+function updateCameraHud(camera, frame) {
+  const text = formatCameraHudText(serializeCameraState(camera, frame));
+  if (lastHudTextByFrame.get(frame) === text) return;
+  lastHudTextByFrame.set(frame, text);
+  ensureCameraHud(frame).textContent = text;
+}
+
+function logCameraState(camera, frame, label = "camera") {
+  const payload = serializeCameraState(camera, frame);
+  console.log(
+    `[Sharp3D] ${label} (paste into SCENE_CAMERAS.${payload.scene}):`,
+    JSON.stringify(payload, null, 2)
+  );
+}
+
+function applyDefaultCamera(camera, radius, frame) {
+  const cfg = getCameraConfig(frame);
+  const target = new THREE.Vector3().fromArray(cfg.target);
+  const dist = Math.max(radius * (cfg.distanceScale ?? 1.0), 0.05);
+
+  if (cfg.lockQuaternion && cfg.position && cfg.quaternion) {
+    camera.position.fromArray(cfg.position);
+    camera.quaternion.fromArray(cfg.quaternion);
+  } else if (cfg.position) {
+    camera.position.fromArray(cfg.position);
+    camera.lookAt(target);
+  } else {
+    camera.position.set(target.x, target.y, target.z + dist);
+    camera.lookAt(target);
+  }
+
+  camera.fov = cfg.fov;
+  camera.near = Math.max(0.001, radius * cfg.nearScale);
+  camera.far = Math.max(50, radius * cfg.farScale);
+  camera.updateProjectionMatrix();
+}
+
+
+
+function formatBytes(bytes) {
+  if (!bytes || bytes < 1024) return `${bytes || 0} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+
+function getIdle(frame) {
+  return frame.querySelector(".results-viewer-idle");
+}
+
+function showIdle(frame) {
+  frame.classList.remove("is-loading", "is-loaded");
+}
+
+function hideIdle(frame) {
+  frame.classList.add("is-loading");
+}
+
+function getProgress(frame) {
+  return frame.querySelector(".results-viewer-progress");
+}
+function setProgress(frame, percent, label) {
+  const wrap = getProgress(frame);
+  if (!wrap) return;
+  const bar = wrap.querySelector(".results-viewer-progress-bar");
+  const track = wrap.querySelector(".results-viewer-progress-track");
+  const labelEl = wrap.querySelector(".results-viewer-progress-label");
+  const pct = Math.max(0, Math.min(100, percent));
+
+  if (bar) bar.style.width = `${pct}%`;
+  if (track) track.setAttribute("aria-valuenow", String(Math.round(pct)));
+  if (labelEl) labelEl.textContent = label ?? `Loading… ${Math.round(pct)}%`;
+}
+
+function hideProgress(frame) {
+  const wrap = getProgress(frame);
+  if (!wrap) return;
+  const bar = wrap.querySelector(".results-viewer-progress-bar");
+  const track = wrap.querySelector(".results-viewer-progress-track");
+  const labelEl = wrap.querySelector(".results-viewer-progress-label");
+  if (bar) bar.style.width = "0%";
+  if (track) track.setAttribute("aria-valuenow", "0");
+  if (labelEl) labelEl.textContent = "Loading…";
+}
+
+function centerAndFrameCamera(camera, splat, frame) {
+  const box = splat.getBoundingBox(true);
+  const center = new THREE.Vector3();
+  const size = new THREE.Vector3();
+  box.getCenter(center);
+  box.getSize(size);
+  const radius = Math.max(size.x, size.y, size.z) * 0.55 || 1;
+
+  splat.position.sub(center);
+  splat.updateMatrixWorld(true);
+
+  applyDefaultCamera(camera, radius, frame);
+  return { radius };
+}
+
+function cleanupPartial(frame, ctx) {
+  if (!ctx) return;
+  ctx.resizeObserver?.disconnect();
+  if (ctx.splat) {
+    ctx.scene?.remove(ctx.splat);
+    try {
+      ctx.splat.dispose();
+    } catch (_) {
+      /* ignore */
+    }
+  }
+  if (ctx.spark) ctx.scene?.remove(ctx.spark);
+  ctx.renderer?.setAnimationLoop(null);
+  ctx.renderer?.dispose();
+  ctx.canvas?.remove();
+}
+
+function disposeViewer(frame) {
+  const ctx = viewers.get(frame);
+  if (!ctx) return;
+
+  ctx.renderer.setAnimationLoop(null);
+  ctx.resizeObserver.disconnect();
+
+  if (ctx.splat) {
+    ctx.scene.remove(ctx.splat);
+    try {
+      ctx.splat.dispose();
+    } catch (_) {
+      /* ignore */
+    }
+  }
+
+  ctx.scene.remove(ctx.spark);
+  ctx.renderer.dispose();
+  ctx.canvas.remove();
+
+  viewers.delete(frame);
+  loading.delete(frame);
+  aborted.delete(frame);
+  frame.querySelector(".results-viewer-camera-hud")?.remove();
+  lastHudTextByFrame.delete(frame);
+  frame.classList.remove("is-loaded", "is-loading");
+  hideProgress(frame);
+  showIdle(frame);
+}
+
+function cancelLoad(frame) {
+  aborted.set(frame, true);
+  loading.delete(frame);
+  if (viewers.has(frame)) {
+    disposeViewer(frame);
+    return;
+  }
+  frame.querySelector(".results-spark-canvas")?.remove();
+  frame.classList.remove("is-loading");
+  hideProgress(frame);
+  showIdle(frame);
+}
+
+async function loadViewer(frame) {
+  const ply = resolveSplatUrl(frame.dataset.ply);
+  if (!ply || viewers.has(frame) || loading.has(frame)) return;
+
+  loading.add(frame);
+  aborted.delete(frame);
+  frame.classList.remove("is-loaded");
+  frame.classList.add("is-loading");
+  setProgress(frame, 0, "Preparing download…");
+
+  const canvas = document.createElement("canvas");
+  canvas.className = "results-spark-canvas";
+  frame.appendChild(canvas);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.01, 1000);
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: false,
+    powerPreference: "high-performance",
+  });
+  renderer.setClearColor(0x1e1e1e, 1);
+
+  const spark = new SparkRenderer({ renderer });
+  scene.add(spark);
+  const controls = new SparkControls({ canvas });
+
+  const maxPixelRatio = 2;
+  function resize() {
+    const width = frame.clientWidth;
+    const height = frame.clientHeight;
+    if (width < 1 || height < 1) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, maxPixelRatio);
+    renderer.setPixelRatio(dpr);
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  }
+
+  const resizeObserver = new ResizeObserver(resize);
+  resizeObserver.observe(frame);
+  resize();
+
+  const ctx = { frame, canvas, scene, camera, renderer, spark, controls, splat: null, resizeObserver };
+
+  const splat = new SplatMesh({
+    url: ply,
+    onProgress: (event) => {
+      if (aborted.get(frame)) return;
+      if (event.lengthComputable && event.total > 0) {
+        const overall = Math.min(88, (event.loaded / event.total) * 88);
+        const filePct = Math.round((event.loaded / event.total) * 100);
+        setProgress(
+          frame,
+          overall,
+          `Downloading… ${filePct}% (${formatBytes(event.loaded)} / ${formatBytes(event.total)})`
+        );
+      } else if (event.loaded) {
+        setProgress(frame, 12, `Downloading… ${formatBytes(event.loaded)}`);
+      }
+    },
+  });
+  splat.quaternion.set(1, 0, 0, 0);
+  scene.add(splat);
+  ctx.splat = splat;
+
+  try {
+    setProgress(frame, 90, "Parsing Gaussian scene…");
+    await splat.initialized;
+
+    if (aborted.get(frame)) {
+      cleanupPartial(frame, ctx);
+      frame.classList.remove("is-loading");
+      showIdle(frame);
+      return;
+    }
+
+    setProgress(frame, 98, "Setting up viewer…");
+    centerAndFrameCamera(camera, splat, frame);
+
+    ensureCameraHud(frame);
+    updateCameraHud(camera, frame);
+
+    renderer.setAnimationLoop(() => {
+      controls.update(camera);
+      updateCameraHud(camera, frame);
+      renderer.render(scene, camera);
+    });
+
+    viewers.set(frame, ctx);
+    frame.classList.add("is-loaded");
+    frame.classList.remove("is-loading");
+    hideProgress(frame);
+  } catch (err) {
+    console.error("Spark viewer failed:", err);
+    cleanupPartial(frame, ctx);
+    viewers.delete(frame);
+    frame.classList.remove("is-loading");
+    hideProgress(frame);
+    if (!aborted.get(frame)) {
+      showIdle(frame);
+    }
+  } finally {
+    loading.delete(frame);
+    aborted.delete(frame);
+  }
+}
+
+function bindFrame(frame) {
+  const start = () => loadViewer(frame);
+  const btn = frame.querySelector(".results-load-btn");
+  btn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    start();
+  });
+  frame.addEventListener("dblclick", () => {
+    const ctx = viewers.get(frame);
+    if (!ctx?.splat) return;
+    const box = ctx.splat.getBoundingBox(true);
+    const size = new THREE.Vector3();
+    box.getSize(size);
+    const radius = Math.max(size.x, size.y, size.z) * 0.55 || 1;
+    applyDefaultCamera(ctx.camera, radius, frame);
+    updateCameraHud(ctx.camera, frame);
+  });
+}
+
+function syncResultsCarousel(carousel, detail) {
+  const activeSlide = detail?.slide;
+  carousel.querySelectorAll(".results-viewer-frame[data-ply]").forEach((frame) => {
+    const inActive = activeSlide?.contains(frame);
+    if (!inActive && (viewers.has(frame) || loading.has(frame))) {
+      if (loading.has(frame)) cancelLoad(frame);
+      else disposeViewer(frame);
+    }
+  });
+}
+
+
+document.addEventListener("keydown", (e) => {
+  if (!e.altKey || e.code !== "KeyC") return;
+  const frame = document.querySelector(".results-viewer-frame.is-loaded");
+  const ctx = frame && viewers.get(frame);
+  if (ctx) logCameraState(ctx.camera, frame, "copy into SCENE_CAMERAS");
+});
+
+
+document.querySelectorAll(".results-viewer-frame[data-ply]").forEach(bindFrame);
+
+document.querySelectorAll(".results-carousel[data-carousel]").forEach((carousel) => {
+  carousel.addEventListener("carousel:change", (e) => syncResultsCarousel(carousel, e.detail));
+});
+
+    </script>
     <script src="script.js" defer></script>
   </body>
 </html>
