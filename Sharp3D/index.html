@@ -266,6 +266,18 @@
             Sparse input views (left) and the reconstructed 3D Gaussian scene (right). Drag to orbit,
             scroll to zoom. Switch scenes with the arrows; click Load 3D Gaussian to load each model.
           </p>
+          <p class="results-render-note">
+            Interactive previews use the
+            <a href="https://sparkjs.dev/" target="_blank" rel="noopener noreferrer">SparkJS</a>
+            renderer with SPZ-compressed splats for faster loading. Transcoding to SPZ may cause
+            <strong>minor</strong> differences in appearance compared to the original reconstruction.
+            For matching renders, download the source
+            <code>.ply</code>
+            files from our
+            <a href="https://huggingface.co/datasets/zhaofq/Sharp3D/tree/main" target="_blank" rel="noopener noreferrer">Hugging Face dataset</a>
+            and view them in
+            <a href="https://superspl.at/editor" target="_blank" rel="noopener noreferrer">SuperSplat</a>.
+          </p>
           <div class="carousel card-surface results-carousel" data-carousel data-carousel-autoplay="false">
             <div class="carousel-viewport results-carousel-viewport">
               <div class="carousel-track" data-carousel-track>
@@ -310,7 +322,7 @@
                       </div>
                       <div
                         class="results-viewer-frame"
-                        data-ply="https://huggingface.co/datasets/zhaofq/Sharp3D/resolve/main/bird.spz"
+                        data-ply="bird.spz"
                         data-scene="bird"
                         tabindex="0"
                         aria-label="Interactive 3D Gaussian viewer"
@@ -384,7 +396,7 @@
                       </div>
                       <div
                         class="results-viewer-frame"
-                        data-ply="https://huggingface.co/datasets/zhaofq/Sharp3D/resolve/main/cat.spz"
+                        data-ply="cat.spz"
                         data-scene="cat"
                         tabindex="0"
                         aria-label="Interactive 3D Gaussian viewer"
@@ -449,7 +461,7 @@
                       </div>
                       <div
                         class="results-viewer-frame"
-                        data-ply="https://huggingface.co/datasets/zhaofq/Sharp3D/resolve/main/street.spz"
+                        data-ply="street.spz"
                         data-scene="street"
                         tabindex="0"
                         aria-label="Interactive 3D Gaussian viewer"
@@ -561,8 +573,8 @@ const SPLAT_ASSET_BASE = "https://huggingface.co/datasets/zhaofq/Sharp3D/resolve
 function resolveSplatUrl(pathOrUrl) {
   if (!pathOrUrl) return "";
   if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
-  const name = pathOrUrl.split("/").pop();
-  return `${SPLAT_ASSET_BASE}/${name}`;
+  if (pathOrUrl.includes("/")) return pathOrUrl;
+  return `${SPLAT_ASSET_BASE}/${pathOrUrl}`;
 }
 
 /** Per-scene default camera (splat centered at origin). Alt+C logs pose → paste into SCENE_CAMERAS. */
