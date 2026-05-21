@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AerialGo - Walking-through City View Generation from Aerial Perspectives</title>
+    <meta name="description" content="AerialGo generates realistic walking-through city views from aerial images for scalable, privacy-conscious urban 3D reconstruction." />
+    <link rel="stylesheet" href="../Sharp3D/styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-inner">
+        <a class="brand" href="#top">AerialGo</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#abstract">Abstract</a>
+          <a href="#video">Video</a>
+          <a href="#pipeline">Pipeline</a>
+          <a href="#dataset">Dataset</a>
+          <a href="#highlights">Highlights</a>
+          <a href="#bibtex">Citation</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="hero-badge">Multi-view Diffusion &middot; Aerial-to-ground generation &middot; Large-scale reconstruction</p>
+          <h1>AerialGo: Walking-through City View Generation from Aerial Perspectives</h1>
+          <p class="hero-sub">Scalable and privacy-conscious city-scale generation&reconstruction from accessible aerial imagery.</p>
+          <p class="authors">
+            <span><strong>Fuqiang Zhao*</strong></span> &middot;
+            <span>Yijing Guo*</span> &middot;
+            <span>Siyuan Yang*</span> &middot;
+            <span>Xi Chen</span> &middot;
+            <span>Luo Wang</span> &middot;
+            <span>Lan Xu</span> &middot;
+            <span>Yingliang Zhang</span> &middot;
+            <span>Yujiao Shi</span> &middot;
+            <span>Jingyi Yu</span>
+          </p>
+          <p class="venue">arXiv Preprint, 2024</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://arxiv.org/abs/2412.00157">Paper</a>
+            <a class="btn btn-ghost" href="#video">Demo Video</a>
+            <a class="btn btn-ghost" href="#bibtex">BibTeX</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="abstract" class="fade-in" aria-label="Abstract">
+        <div class="container">
+          <h2 class="section-title">Abstract</h2>
+          <p class="section-lead">
+            High-quality 3D urban reconstruction is essential for applications in urban planning, navigation, and AR/VR.
+            However, capturing detailed ground-level data across cities is both labor-intensive and raises significant
+            privacy concerns related to sensitive information, such as vehicle plates, faces, and other personal identifiers.
+            To address these challenges, we propose <strong>AerialGo</strong>, a novel framework that generates realistic
+            walking-through city views from aerial images, leveraging multi-view diffusion models to achieve scalable,
+            photorealistic urban reconstructions without direct ground-level data collection. By conditioning ground-view
+            synthesis on accessible aerial data, AerialGo bypasses the privacy risks inherent in ground-level imagery.
+            To support the model training, we introduce AerialGo dataset, a large-scale dataset containing diverse aerial
+            and ground-view images, paired with camera and depth information, designed to support generative urban
+            reconstruction. Experiments show that AerialGo significantly enhances ground-level realism and structural
+            coherence, providing a privacy-conscious, scalable solution for city-scale 3D modeling.
+          </p>
+          <div class="card-surface">
+            <figure class="teaser-figure">
+              <img src="assets/teaser.png" alt="AerialGo teaser" loading="eager" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="video" class="fade-in" aria-label="Demo video">
+        <div class="container">
+          <h2 class="section-title">Demo Video</h2>
+          <p class="section-lead">
+            The demo video presents AerialGo's aerial-to-ground view generation results and demonstrates how the
+            generated ground-level views support scalable urban scene reconstruction and simulation.
+          </p>
+          <div class="card-surface">
+            <figure class="video-figure youtube-figure">
+              <iframe width="1436" height="808" src="https://www.youtube.com/embed/Fixi3NV1Dn0" 
+              title="AerialGo: Walking-through City View Generation from Aerial Perspectives" 
+              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="pipeline" class="fade-in" aria-label="Pipeline">
+        <div class="container">
+          <h2 class="section-title">Pipeline</h2>
+          <p class="section-lead">
+            Pipeline of the AerialGo method. Starting with a target ground view, we first select reference images from the nearest aerial
+            views and encode them using a pretrained auto-encoder. The diffusion model then processes the encoded aerial features along with random
+            noise at the ground view, passing the adapted features through 3D self-attention layers. Additionally, CLIP embeddings of the ground-view
+            point cloud render are integrated via cross-attention layers to enhance structural consistency in the generated views. The resulting priors
+            contribute to improved 3D urban reconstruction quality, especially at ground level.
+          </p>
+          <div class="card-surface">
+            <figure class="pipeline-figure">
+              <img
+                src="assets/pipeline.png"
+                alt="AerialGo pipeline"
+                loading="lazy"
+                onerror="this.style.display='none'; document.getElementById('pipeline-placeholder').style.display='grid';"
+              />
+              <div id="pipeline-placeholder" class="asset-placeholder" style="display: none;">
+                <div>
+                  <strong>Pipeline Figure Placeholder</strong>
+                  <span>Add the pipeline image as <code>AerialGo/assets/pipeline.png</code>.</span>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="dataset" class="fade-in" aria-label="Dataset">
+        <div class="container">
+          <h2 class="section-title">Dataset</h2>
+          <p class="section-lead">
+            Overview of the AerialGo dataset and data collection process. The figure shows an example urban city model,
+            including block partitioning, aerial and ground trajectory design, and dynamic rendering capabilities for
+            scalable scene simulation.
+          </p>
+          <div class="card-surface dataset-card">
+            <figure class="dataset-figure">
+              <img src="assets/dataset.png" alt="AerialGo dataset overview" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="highlights" class="fade-in" aria-label="Highlights">
+        <div class="container">
+          <h2 class="section-title">Highlights</h2>
+          <p class="section-lead">
+            AerialGo uses multi-view diffusion to bridge aerial imagery and ground-level urban perception, targeting
+            large-scale data simulation for autonomous driving, world models, and city-scale 3D reconstruction.
+          </p>
+          <div class="spec-grid">
+            <div class="spec-card">
+              <h3>Multi-view Diffusion</h3>
+              <p>
+                Leverages multi-view diffusion priors to synthesize coherent ground-view observations from aerial
+                conditioning, improving cross-view consistency and structural realism.
+              </p>
+            </div>
+            <div class="spec-card">
+              <h3>Aerial-to-Ground Generation</h3>
+              <p>
+                Targets the generation of realistic street-level and walking-through views from aerial captures,
+                reducing the need for exhaustive ground data collection.
+              </p>
+            </div>
+            <div class="spec-card">
+              <h3>Large-scale Simulation</h3>
+              <p>
+                Supports scalable scene data simulation for autonomous driving, embodied AI, world models, and
+                city-scale 3D reconstruction pipelines.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="bibtex" class="fade-in">
+        <div class="container">
+          <h2 class="section-title">Citation</h2>
+          <p class="section-lead">Please cite AerialGo if you find this project useful.</p>
+          <pre class="bibtex"><code>@article{zhao2024aerialgo,
+  title   = {AerialGo: Walking-through City View Generation from Aerial Perspectives},
+  author  = {Zhao, Fuqiang and Guo, Yijing and Yang, Siyuan and Chen, Xi and Wang, Luo and Xu, Lan and Zhang, Yingliang and Shi, Yujiao and Yu, Jingyi},
+  journal = {arXiv preprint arXiv:2412.00157},
+  year    = {2024}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <strong>AerialGo</strong> - project page for walking-through city view generation from aerial perspectives.
+      </div>
+    </footer>
+    <script src="../Sharp3D/script.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+/* AerialGo-specific adjustments on top of the Sharp3D project-page theme. */
+.hero h1 {
+  font-size: clamp(1.85rem, 3.8vw, 3rem);
+}
+
+.video-figure,
+.pipeline-figure,
+.teaser-figure {
+  margin: 0;
+}
+
+.video-figure video {
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+  background: #080d18;
+}
+
+.asset-placeholder {
+  min-height: 320px;
+  place-items: center;
+  border: 1px dashed rgba(148, 163, 184, 0.45);
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.45);
+  color: #94a3b8;
+  text-align: center;
+  padding: 2rem;
+}
+
+.asset-placeholder strong {
+  display: block;
+  color: #f8fafc;
+  margin-bottom: 0.45rem;
+}
+
+.asset-placeholder code,
+.section-lead code {
+  color: #38bdf8;
+}
+
+@media (max-width: 720px) {
+  .hero h1 {
+    font-size: clamp(1.85rem, 8vw, 2.6rem);
+  }
+}
+
+.youtube-figure {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  background: #080d18;
+}
+
+.youtube-figure iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.dataset-card {
+  margin-bottom: 1.5rem;
+}
+
+.dataset-figure {
+  margin: 0;
+}
+
+.dataset-figure img {
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+}
