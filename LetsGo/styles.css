@@ -1,0 +1,116 @@
+/* LetsGo-specific adjustments on top of the Sharp3D project-page theme. */
+.hero h1 {
+  font-size: clamp(1.75rem, 3.6vw, 2.85rem);
+}
+
+.hero .authors {
+  max-width: 62rem;
+}
+
+.hero .authors a,
+.hero .authors span {
+  color: rgba(248, 250, 252, 0.92);
+}
+
+.media-figure {
+  margin: 0;
+}
+
+.media-figure img,
+.single-media {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  background: #080d18;
+}
+
+.section-lead-block {
+  margin-top: 1.25rem;
+}
+
+.subsection {
+  margin-top: 2rem;
+}
+
+.subsection h4 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--text);
+}
+
+.youtube-figure {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  background: #080d18;
+}
+
+.youtube-figure iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.single-carousel {
+  margin-top: 1rem;
+}
+
+.single-carousel .carousel-viewport {
+  overflow: hidden;
+  border-radius: 20px;
+  background: #080d18;
+}
+
+.single-carousel .carousel-slide {
+  min-width: 100%;
+  padding: 0;
+}
+
+.single-carousel .single-media {
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+.single-carousel .carousel-nav {
+  margin-top: 0.85rem;
+}
+
+.app-media {
+  margin-top: 1rem;
+}
+
+.app-media-pair {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.app-media-pair .app-media {
+  margin-top: 0;
+}
+
+.app-media-narrow {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bibtex code {
+  white-space: pre;
+}
+
+@media (max-width: 720px) {
+  .hero h1 {
+    font-size: clamp(1.75rem, 8vw, 2.45rem);
+  }
+}
+
+@media (min-width: 860px) {
+  .app-media-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
