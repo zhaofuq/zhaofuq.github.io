@@ -312,8 +312,16 @@ section {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .results-thumbs--count-6 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   @media (max-width: 420px) {
     .results-thumbs--count-3 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .results-thumbs--count-6 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 

@@ -420,6 +420,7 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="carousel-slide results-carousel-slide" data-carousel-slide>
                   <h3 class="results-slide-title">Street</h3>
                   <p class="results-slide-caption">
@@ -471,6 +472,98 @@
                             <div class="results-viewer-progress-bar"></div>
                           </div>
                           <p class="results-viewer-progress-label">Loading…</p>
+                        </div>
+                        <div class="results-viewer-idle">
+                          <button type="button" class="results-load-btn">
+                            <svg class="results-load-btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                              <path d="M8 2.5v7.2M5.2 6.9 8 4.1l2.8 2.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M3 12.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                            </svg>
+                            <span class="results-load-btn-label">Load 3D Gaussian</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-slide results-carousel-slide" data-carousel-slide>
+                  <h3 class="results-slide-title">FlowerStreet</h3>
+                  <p class="results-slide-caption">
+                    Twenty-six dense views - feed-forward 3D Gaussian reconstruction. Model may be larger than others; load may take longer.
+                  </p>
+                  <div class="results-showcase">
+                    <aside class="results-thumbs results-thumbs--count-6" aria-label="Input views, FlowerStreet">
+                      <button type="button" class="results-thumb-btn is-active" aria-pressed="true">
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/FlowerStreet/frame_000004.png"
+                          alt="FlowerStreet input view 1"
+                          loading="lazy"
+                          draggable="false"
+                        />
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/FlowerStreet/frame_000010.png"
+                          alt="FlowerStreet input view 2"
+                          loading="lazy"
+                          draggable="false"
+                        />
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/FlowerStreet/frame_000012.png"
+                          alt="FlowerStreet input view 3"
+                          loading="lazy"
+                          draggable="false"
+                        />
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/FlowerStreet/frame_000017.png"
+                          alt="FlowerStreet input view 4"
+                          loading="lazy"
+                          draggable="false"
+                        />
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/FlowerStreet/frame_000020.png"
+                          alt="FlowerStreet input view 5"
+                          loading="lazy"
+                          draggable="false"
+                        />
+                      </button>
+                      <button type="button" class="results-thumb-btn" aria-pressed="false">
+                        <img
+                          class="results-thumb-img"
+                          src="assets/Results/FlowerStreet/frame_000028.png"
+                          alt="FlowerStreet input view 6"
+                          loading="lazy"
+                          draggable="false"
+                        />
+                      </button>
+                    </aside>
+                    <div class="results-viewer" aria-label="3D Gaussian splat rendering, FlowerStreet">
+                      <div class="results-viewer-chrome">
+                        <span class="results-viewer-title">3D Gaussian - FlowerStreet</span>
+                      </div>
+                      <div
+                        class="results-viewer-frame"
+                        data-ply="flowerstreet.spz"
+                        data-scene="flowerstreet"
+                        tabindex="0"
+                        aria-label="Interactive 3D Gaussian viewer"
+                      >
+                        <div class="results-viewer-progress">
+                          <div class="results-viewer-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Loading progress">
+                            <div class="results-viewer-progress-bar"></div>
+                          </div>
+                          <p class="results-viewer-progress-label">Loading...</p>
                         </div>
                         <div class="results-viewer-idle">
                           <button type="button" class="results-load-btn">
@@ -604,6 +697,16 @@ const SCENE_CAMERAS = {
     target: [0, 0, 0],
     position: [-0.13, 16.5, -45.1],
     quaternion: [0, 0, 0, 1],
+    lockQuaternion: true,
+  },
+  flowerstreet: {
+    fov: 45,
+    nearScale: 0.02,
+    farScale: 20,
+    target: [0, 0, 0],
+    position: [43.45, 18.76, -43.68],
+    quaternion: [-0.021, 0.158, 0.003, 0.987],
+    distanceScale: 1.1,
     lockQuaternion: true,
   },
 };
